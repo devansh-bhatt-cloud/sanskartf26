@@ -65,7 +65,7 @@ function StatCard({ stat }: StatCardProps) {
     <motion.div
       ref={ref}
       variants={scaleIn}
-      className="theme-surface-panel relative group overflow-hidden rounded-2xl p-6 transition-all duration-300 lg:p-8"
+      className="theme-surface-panel relative group overflow-hidden rounded-[2rem] p-7 transition-all duration-300 lg:p-9"
       style={{ backdropFilter: "blur(12px)" }}
       whileHover={{
         borderColor: stat.color + "60",
@@ -89,7 +89,7 @@ function StatCard({ stat }: StatCardProps) {
       />
 
       {/* Number */}
-      <div className="relative z-10 mb-3">
+      <div className="relative z-10 mb-4">
         <span
           className="text-5xl sm:text-6xl font-black tabular-nums leading-none"
           style={{ color: stat.color }}
@@ -105,12 +105,12 @@ function StatCard({ stat }: StatCardProps) {
       </div>
 
       {/* Label */}
-      <h3 className="relative z-10 text-white font-bold text-base mb-2 leading-snug">
+      <h3 className="relative z-10 mb-3 text-lg font-bold leading-snug text-white">
         {stat.label}
       </h3>
 
       {/* Description */}
-      <p className="relative z-10 text-slate-400 text-sm leading-relaxed">
+      <p className="relative z-10 text-sm leading-7 text-slate-400">
         {stat.description}
       </p>
 
@@ -127,7 +127,7 @@ export default function Data() {
   return (
     <SectionWrapper
       id="data"
-      className="min-h-screen py-24 bg-[#020d08]"
+      className="min-h-screen bg-[#020d08] py-28 lg:py-32"
     >
       {/* Ambient background */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -141,7 +141,7 @@ export default function Data() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
-          className="text-center mb-16"
+          className="mb-20 text-center"
         >
           <motion.p
             variants={fadeUp}
@@ -160,7 +160,7 @@ export default function Data() {
           </motion.h2>
           <motion.p
             variants={fadeUp}
-            className="mt-4 text-lg text-slate-400 max-w-2xl mx-auto"
+            className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-400"
           >
             These figures reveal both the damage conflict causes and the
             systems still working to contain it. The stakes are human, not
@@ -174,7 +174,7 @@ export default function Data() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6"
+          className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7"
         >
           {dataStats.map((stat) => (
             <StatCard key={stat.label} stat={stat} />
@@ -187,7 +187,7 @@ export default function Data() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
-          className="text-center text-slate-600 text-xs mt-12 max-w-xl mx-auto"
+          className="mx-auto mt-16 max-w-xl text-center text-xs text-slate-600"
         >
           Sources: UNHCR, World Bank, Institute for Economics & Peace, United
           Nations, Stockholm International Peace Research Institute (SIPRI).

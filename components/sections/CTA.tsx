@@ -79,19 +79,19 @@ export default function CTA() {
   }
 
   return (
-    <SectionWrapper id="cta" className="min-h-screen bg-[#011a12] py-24">
+    <SectionWrapper id="cta" className="min-h-screen bg-[#011a12] py-28 lg:py-32">
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute left-1/2 top-0 h-72 w-[44rem] -translate-x-1/2 rounded-full bg-emerald-900/20 blur-3xl" />
         <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-teal-900/10 blur-3xl" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
-          className="mb-16 text-center"
+          className="mb-20 text-center"
         >
           <motion.p
             variants={fadeUp}
@@ -105,12 +105,12 @@ export default function CTA() {
           >
             Carry the <span className="bg-gradient-to-r from-emerald-300 via-teal-300 to-cyan-300 bg-clip-text text-transparent">Story Forward</span>
           </motion.h2>
-          <motion.p variants={fadeUp} className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-slate-300">
+          <motion.p variants={fadeUp} className="mx-auto mt-8 max-w-3xl text-xl leading-9 text-slate-300">
             Peace grows when people choose to speak, suggest, and act where they are. Leave a peace
             message, a critique, or an idea that could make this experience stronger.
           </motion.p>
 
-          <motion.div variants={fadeUp} className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
+          <motion.div variants={fadeUp} className="mt-12 flex flex-col justify-center gap-4 sm:flex-row sm:gap-5">
             <Button href="#interactive" variant="secondary">
               Revisit the Interactive Field
             </Button>
@@ -125,34 +125,34 @@ export default function CTA() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
-          className="theme-surface-panel overflow-hidden rounded-[2rem] backdrop-blur-xl"
+          className="theme-surface-panel overflow-hidden rounded-[2.25rem] backdrop-blur-xl"
         >
           <div className="grid gap-0 lg:grid-cols-[0.72fr_1fr]">
-            <div className="border-b border-white/8 p-8 lg:border-b-0 lg:border-r lg:p-10">
+            <div className="border-b border-white/8 p-9 lg:border-b-0 lg:border-r lg:p-12">
               <motion.p variants={fadeUp} className="text-[10px] font-bold uppercase tracking-[0.3em] text-emerald-200/70">
                 Prompt Bank
               </motion.p>
               <motion.h3 variants={fadeUp} className="font-display mt-4 text-2xl text-white sm:text-3xl">
                 Not sure what to write?
               </motion.h3>
-              <motion.p variants={fadeUp} className="mt-4 text-sm leading-relaxed text-slate-300">
+              <motion.p variants={fadeUp} className="mt-5 text-sm leading-7 text-slate-300">
                 Choose one of these prompts to start. They are designed for both peace messages and design suggestions.
               </motion.p>
 
-              <div className="mt-6 space-y-3">
+              <div className="mt-8 space-y-4">
                 {ctaPrompts.map((prompt) => (
                   <button
                     key={prompt}
                     type="button"
                     onClick={() => handlePromptClick(prompt)}
-                    className="theme-surface-card w-full rounded-2xl p-4 text-left text-sm leading-relaxed text-slate-200 transition-all duration-200 hover:border-emerald-300/30 hover:bg-emerald-400/8"
+                    className="theme-surface-card w-full rounded-[1.5rem] p-5 text-left text-sm leading-7 text-slate-200 transition-all duration-200 hover:border-emerald-300/30 hover:bg-emerald-400/8"
                   >
                     {prompt}
                   </button>
                 ))}
               </div>
 
-              <div className="theme-surface-overlay mt-8 rounded-[1.5rem] p-5">
+              <div className="theme-surface-overlay mt-10 rounded-[1.75rem] p-6">
                 <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-cyan-200/70">What we are asking for</p>
                 <ul className="mt-4 space-y-3 text-sm leading-relaxed text-slate-300">
                   <li>One peace message you believe people need to hear.</li>
@@ -162,11 +162,11 @@ export default function CTA() {
               </div>
             </div>
 
-            <div className="p-8 lg:p-10">
+            <div className="p-9 lg:p-12">
               <motion.h3 variants={fadeUp} className="font-display text-2xl text-white sm:text-3xl">
                 Share a Message or Suggestion
               </motion.h3>
-              <motion.p variants={fadeUp} className="mt-3 text-sm leading-relaxed text-slate-400">
+              <motion.p variants={fadeUp} className="mt-4 text-sm leading-7 text-slate-400">
                 Send a peace message, reflection, or suggestion for what this experience should include next.
               </motion.p>
 
@@ -205,10 +205,10 @@ export default function CTA() {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     onSubmit={handleSubmit}
-                    className="mt-8 space-y-5"
+                    className="mt-10 space-y-6"
                     noValidate
                   >
-                    <div className="grid gap-5 sm:grid-cols-2">
+                    <div className="grid gap-6 sm:grid-cols-2">
                       <div>
                         <label className="mb-1.5 block text-sm font-medium text-slate-300">
                           Name <span className="text-emerald-400">*</span>

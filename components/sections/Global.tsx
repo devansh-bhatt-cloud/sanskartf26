@@ -44,7 +44,7 @@ export default function Global() {
   const active = globalRegions[activeIndex]
 
   return (
-    <SectionWrapper id="global" className="min-h-screen bg-[#030b10] py-24 !overflow-visible">
+    <SectionWrapper id="global" className="min-h-screen bg-[#030b10] py-28 lg:py-32 !overflow-visible">
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute left-0 top-1/2 h-96 w-96 rounded-full bg-cyan-900/8 blur-3xl" />
         <div className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-blue-900/8 blur-3xl" />
@@ -56,7 +56,7 @@ export default function Global() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
-          className="mb-16 text-center"
+          className="mb-20 text-center"
         >
           <motion.p
             variants={fadeUp}
@@ -73,7 +73,7 @@ export default function Global() {
               Peace
             </span>
           </motion.h2>
-          <motion.p variants={fadeUp} className="mx-auto mt-4 max-w-2xl text-lg text-slate-400">
+          <motion.p variants={fadeUp} className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-400">
             No single culture owns peace-building. Scroll through each region to see how peace is practiced differently around the world.
           </motion.p>
         </motion.div>
@@ -86,10 +86,10 @@ export default function Global() {
             initial="hidden"
             whileInView="visible"
             viewport={viewportConfig}
-            className="flex w-full flex-col gap-8 lg:flex-row"
+            className="flex w-full flex-col gap-10 lg:flex-row"
           >
             <div className="flex flex-row gap-2 overflow-x-auto pb-2 lg:w-60 lg:flex-shrink-0 lg:flex-col lg:overflow-visible lg:pb-0">
-              <div className="theme-surface-card hidden rounded-2xl p-4 lg:block">
+              <div className="theme-surface-card hidden rounded-[1.5rem] p-5 lg:block">
                 <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-cyan-200/65">Scroll to move</p>
                 <p className="mt-3 text-sm leading-relaxed text-slate-300">Tap any region to jump directly to it.</p>
               </div>
@@ -101,7 +101,7 @@ export default function Global() {
                   <button
                     key={region.id}
                     onClick={() => handleRegionSelect(index)}
-                    className={`flex flex-shrink-0 items-center gap-3 rounded-xl border px-4 py-3 text-left whitespace-nowrap transition-all duration-250 lg:whitespace-normal ${
+                    className={`flex flex-shrink-0 items-center gap-4 rounded-[1.25rem] border px-5 py-4 text-left whitespace-nowrap transition-all duration-250 lg:whitespace-normal ${
                       isActive
                         ? 'border-white/15 text-white shadow-[0_0_28px_rgba(34,211,238,0.06)]'
                         : 'border-transparent text-slate-400 hover:bg-white/5 hover:text-white'
@@ -141,7 +141,7 @@ export default function Global() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                   className="theme-surface-panel h-full rounded-2xl p-6 sm:p-8 lg:p-10"
+                   className="theme-surface-panel h-full rounded-[2rem] p-7 sm:p-9 lg:p-11"
                    style={{
                      backdropFilter: 'blur(16px)',
                    }}
@@ -158,7 +158,7 @@ export default function Global() {
                     />
                   </div>
 
-                  <div className="mb-6 flex items-start gap-4">
+                  <div className="mb-8 flex items-start gap-5">
                     <span className="text-4xl">{active.flag}</span>
                     <div>
                       <p className="mb-1 text-xs font-bold uppercase tracking-widest" style={{ color: active.color }}>
@@ -173,13 +173,13 @@ export default function Global() {
                     style={{ background: `linear-gradient(90deg, ${active.color}60, transparent)` }}
                   />
 
-                  <p className="mb-8 text-base leading-relaxed text-slate-300">{active.description}</p>
+                  <p className="mb-10 max-w-3xl text-base leading-8 text-slate-300">{active.description}</p>
 
                   <div>
                     <p className="mb-4 text-xs font-bold uppercase tracking-widest" style={{ color: active.color + 'cc' }}>
                       What This Region Teaches
                     </p>
-                    <ul className="space-y-3">
+                    <ul className="space-y-4">
                       {active.efforts.map((effort, i) => (
                         <motion.li
                           key={i}
@@ -195,7 +195,7 @@ export default function Global() {
                     </ul>
                   </div>
 
-                   <div className="theme-surface-card mt-8 rounded-2xl p-5">
+                   <div className="theme-surface-card mt-10 rounded-[1.5rem] p-6">
                     <p className="mb-2 text-xs font-bold uppercase tracking-widest" style={{ color: active.color + 'cc' }}>
                       Carry Forward
                     </p>

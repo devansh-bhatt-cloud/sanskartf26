@@ -37,9 +37,9 @@ export default function Hero() {
       <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_center,transparent_18%,rgba(3,5,12,0.5)_62%,rgba(3,5,12,0.9)_100%)]" />
       <div className="absolute inset-x-0 bottom-0 z-10 h-40 bg-gradient-to-b from-transparent to-[#0d0208]" />
 
-      <div className="relative z-20 mx-auto flex w-full max-w-6xl flex-col items-center px-6 pt-24 text-center sm:px-8">
+      <div className="relative z-20 mx-auto flex w-full max-w-7xl flex-col items-center px-6 pt-28 pb-20 text-center sm:px-8 lg:pt-32">
         <motion.p
-          className="eyebrow-label mb-6 text-xs font-semibold text-cyan-100/60"
+          className="eyebrow-label mb-8 text-xs font-semibold text-cyan-100/60"
           variants={fadeUp}
           initial="hidden"
           animate="visible"
@@ -53,7 +53,7 @@ export default function Hero() {
           initial="hidden"
           animate="visible"
           custom={0.5}
-          className="max-w-4xl"
+          className="max-w-5xl"
         >
           <h1 className="font-display text-5xl leading-[0.9] tracking-tight text-white sm:text-6xl md:text-7xl xl:text-[8rem]">
             <span className="block whitespace-nowrap">Peace and</span>
@@ -62,7 +62,7 @@ export default function Hero() {
         </motion.div>
 
         <motion.p
-          className="mt-8 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg"
+          className="mt-10 max-w-3xl text-base leading-8 text-slate-300 sm:text-lg"
           variants={fadeUp}
           initial="hidden"
           animate="visible"
@@ -73,7 +73,7 @@ export default function Hero() {
         </motion.p>
 
         <motion.div
-          className="mt-10 flex flex-col gap-4 sm:flex-row"
+          className="mt-12 flex flex-col gap-4 sm:flex-row sm:gap-5"
           variants={fadeUp}
           initial="hidden"
           animate="visible"
@@ -88,21 +88,21 @@ export default function Hero() {
         </motion.div>
 
         <motion.div
-          className="theme-surface-panel mt-10 grid w-full max-w-3xl gap-3 rounded-[2rem] p-4 text-left backdrop-blur-xl sm:grid-cols-3"
+          className="theme-surface-panel mt-14 grid w-full max-w-4xl gap-4 rounded-[2rem] p-5 text-left backdrop-blur-xl sm:grid-cols-3 sm:p-6"
           variants={fadeUp}
           initial="hidden"
           animate="visible"
           custom={1.35}
         >
-          <div className="theme-surface-card rounded-2xl p-4">
+          <div className="theme-surface-card rounded-[1.5rem] p-5 sm:p-6">
             <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-cyan-300/75">Move</p>
             <p className="mt-2 text-sm text-slate-200">Shift the camera and bend the field around your cursor.</p>
           </div>
-          <div className="theme-surface-card rounded-2xl p-4">
+          <div className="theme-surface-card rounded-[1.5rem] p-5 sm:p-6">
             <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-violet-300/75">Click</p>
             <p className="mt-2 text-sm text-slate-200">Pull the particles toward unity for a brief moment.</p>
           </div>
-          <div className="theme-surface-card rounded-2xl p-4">
+          <div className="theme-surface-card rounded-[1.5rem] p-5 sm:p-6">
             <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-emerald-300/75">Continue</p>
             <p className="mt-2 text-sm text-slate-200">Follow the story from fracture, to repair, to participation.</p>
           </div>

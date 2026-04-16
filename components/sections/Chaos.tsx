@@ -13,7 +13,7 @@ const ChaosScene = dynamic(() => import('@/components/three/chaos/ChaosScene'), 
 
 export default function Chaos() {
   return (
-    <SectionWrapper id="chaos" className="min-h-screen bg-[#0d0208] py-24">
+    <SectionWrapper id="chaos" className="min-h-screen bg-[#0d0208] py-28 lg:py-32">
       <div className="absolute inset-0 opacity-70">
         <ChaosScene />
       </div>
@@ -29,7 +29,7 @@ export default function Chaos() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
-          className="mx-auto mb-16 max-w-3xl text-center"
+          className="mx-auto mb-20 max-w-4xl text-center"
         >
           <motion.p
             variants={fadeUp}
@@ -43,7 +43,7 @@ export default function Chaos() {
           >
             How Harmony <span className="bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">Unravels</span>
           </motion.h2>
-          <motion.p variants={fadeUp} className="mt-4 text-lg text-slate-300">
+          <motion.p variants={fadeUp} className="mt-6 text-lg leading-8 text-slate-300">
             Conflict rarely erupts from one cause. It grows through patterns that turn tension into fear,
             fear into separation, and separation into violence.
           </motion.p>
@@ -54,36 +54,36 @@ export default function Chaos() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
-          className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
+          className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7"
         >
           {chaosContent.map((card) => (
             <motion.article
               key={card.id}
               variants={scaleIn}
               whileHover={{ scale: 1.02, y: -4, transition: { duration: 0.2 } }}
-              className="theme-surface-panel group relative overflow-hidden rounded-[1.75rem] p-6 backdrop-blur-md"
+              className="theme-surface-panel group relative overflow-hidden rounded-[2rem] p-7 backdrop-blur-md sm:p-8"
             >
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(248,113,113,0.15),transparent_55%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               <div className="relative z-10">
-                <div className="mb-4 flex items-center justify-between">
+                <div className="mb-5 flex items-center justify-between">
                   <span className="text-3xl">{card.icon}</span>
                   <span className="rounded-full border border-red-400/20 bg-red-500/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.24em] text-red-200/80">
                     Pattern {card.id}
                   </span>
                 </div>
 
-                <h3 className="mb-3 text-lg font-bold leading-snug text-white transition-colors duration-200 group-hover:text-red-100">
+                <h3 className="mb-4 text-xl font-bold leading-snug text-white transition-colors duration-200 group-hover:text-red-100">
                   {card.title}
                 </h3>
-                <p className="mb-5 text-sm leading-relaxed text-slate-300">{card.description}</p>
+                <p className="mb-6 text-sm leading-7 text-slate-300">{card.description}</p>
 
                 {card.stat && (
-                  <p className="mb-4 border-l border-red-400/35 pl-4 text-xs font-semibold uppercase tracking-[0.18em] text-red-200/85">
+                  <p className="mb-5 border-l border-red-400/35 pl-4 text-xs font-semibold uppercase tracking-[0.18em] text-red-200/85">
                     {card.stat}
                   </p>
                 )}
 
-                <div className="theme-surface-overlay rounded-2xl p-4">
+                <div className="theme-surface-overlay rounded-[1.5rem] p-5">
                   <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-orange-200/70">Path Forward</p>
                   <p className="mt-2 text-sm text-slate-200">{card.pathForward}</p>
                 </div>
@@ -97,7 +97,7 @@ export default function Chaos() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
-          className="mt-16 text-center"
+          className="mt-20 text-center"
         >
           <p className="text-lg text-slate-300">
             If chaos is constructed, it can be unmade.{' '}

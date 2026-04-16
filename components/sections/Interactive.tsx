@@ -102,7 +102,7 @@ export default function Interactive() {
   )
 
   return (
-    <SectionWrapper id="interactive" className="min-h-screen bg-[#010d1a] py-24 !overflow-visible">
+    <SectionWrapper id="interactive" className="min-h-screen bg-[#010d1a] py-28 lg:py-32 !overflow-visible">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-violet-900/12 blur-3xl" />
         <div className="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-blue-900/12 blur-3xl" />
@@ -114,7 +114,7 @@ export default function Interactive() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
-          className="mx-auto mb-16 max-w-3xl text-center"
+          className="mx-auto mb-20 max-w-4xl text-center"
         >
           <motion.p
             variants={fadeUp}
@@ -131,7 +131,7 @@ export default function Interactive() {
               Voices Choosing Peace
             </span>
           </motion.h2>
-          <motion.p variants={fadeUp} className="mt-4 text-lg text-slate-300">
+          <motion.p variants={fadeUp} className="mt-6 text-lg leading-8 text-slate-300">
             Move through disorder, click to change the force you exert, and scroll through the stage until scattered particles align into a shared symbol of harmony.
           </motion.p>
         </motion.div>
@@ -139,8 +139,8 @@ export default function Interactive() {
 
       <div ref={stageRef} className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="lg:hidden">
-          <div className="theme-surface-panel w-full overflow-hidden rounded-[2rem] backdrop-blur-xl">
-            <div className="grid gap-6 p-5 lg:p-6">
+          <div className="theme-surface-panel w-full overflow-hidden rounded-[2.25rem] backdrop-blur-xl">
+            <div className="grid gap-8 p-6 lg:p-7">
               <div className="relative min-h-[28rem] overflow-hidden rounded-[1.75rem] border border-white/10 bg-[radial-gradient(circle_at_top,rgba(124,58,237,0.2),transparent_48%)] sm:min-h-[34rem]">
                 <CenterpieceScene harmonyProgress={harmonyProgress} onModeChange={setForceMode} />
 
@@ -167,7 +167,7 @@ export default function Interactive() {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-5">
                 {storyStages.map((stage, index) => {
                   const intensity = panelStates[index]
 
@@ -180,7 +180,7 @@ export default function Interactive() {
                         scale: 0.97 + intensity * 0.03,
                       }}
                       transition={{ duration: 0.35, ease: 'easeOut' }}
-                      className={`rounded-[1.75rem] border p-6 ${
+                       className={`rounded-[2rem] border p-7 ${
                         activeStageIndex === index
                           ? 'border-white/16 bg-white/8 shadow-[0_0_50px_rgba(34,211,238,0.08)]'
                           : 'theme-surface-card'
@@ -196,10 +196,10 @@ export default function Interactive() {
                 <motion.div
                   animate={{ opacity: 0.25 + panelStates[2] * 0.75, y: 30 - panelStates[2] * 30 }}
                   transition={{ duration: 0.35, ease: 'easeOut' }}
-                  className="theme-surface-card rounded-[1.75rem] p-6"
+                   className="theme-surface-card rounded-[2rem] p-7"
                 >
                   <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-emerald-200/70">Message in focus</p>
-                   <div className="theme-surface-overlay mt-4 rounded-[1.5rem] p-5">
+                    <div className="theme-surface-overlay mt-5 rounded-[1.75rem] p-6">
                     <span className={`inline-flex rounded-full border px-3 py-1 text-[10px] font-bold uppercase tracking-[0.24em] ${themeAccents[highlightedMessage.theme]}`}>
                       {highlightedMessage.theme}
                     </span>
@@ -211,7 +211,7 @@ export default function Interactive() {
                 <motion.div
                   animate={{ opacity: 0.18 + panelStates[2] * 0.82, y: 34 - panelStates[2] * 34 }}
                   transition={{ duration: 0.35, ease: 'easeOut' }}
-                  className="grid gap-3 sm:grid-cols-2"
+                  className="grid gap-4 sm:grid-cols-2"
                 >
                   {peaceMessages.slice(0, 4).map((message) => (
                     <div
@@ -229,15 +229,15 @@ export default function Interactive() {
         </div>
 
         <div className="hidden lg:block" style={{ height: desktopStageHeight }}>
-          <div className="lg:sticky lg:top-6 lg:flex lg:min-h-[calc(100svh-3rem)] lg:flex-col lg:justify-center lg:gap-5 lg:py-3">
+          <div className="lg:sticky lg:top-6 lg:flex lg:min-h-[calc(100svh-3rem)] lg:flex-col lg:justify-center lg:gap-6 lg:py-4">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewportConfig}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-               className="theme-surface-panel w-full overflow-hidden rounded-[2rem] backdrop-blur-xl lg:h-[calc(100svh-12rem)]"
-            >
-              <div className="grid gap-6 p-5 lg:h-full lg:grid-cols-[1.2fr_0.8fr] lg:p-6">
+                className="theme-surface-panel w-full overflow-hidden rounded-[2.25rem] backdrop-blur-xl lg:h-[calc(100svh-12rem)]"
+              >
+              <div className="grid gap-8 p-6 lg:h-full lg:grid-cols-[1.18fr_0.82fr] lg:p-7">
                 <div className="relative min-h-[28rem] overflow-hidden rounded-[1.75rem] border border-white/10 bg-[radial-gradient(circle_at_top,rgba(124,58,237,0.2),transparent_48%)] sm:min-h-[34rem] lg:h-full lg:min-h-0">
                   <CenterpieceScene harmonyProgress={harmonyProgress} onModeChange={setForceMode} />
 
@@ -265,19 +265,19 @@ export default function Interactive() {
                 </div>
 
                 <div className="hidden lg:block">
-                  <div className="theme-surface-card relative h-full overflow-hidden rounded-[1.75rem]">
+                  <div className="theme-surface-card relative h-full overflow-hidden rounded-[2rem]">
                     <motion.div
                       animate={{ y: `-${desktopPanelShift}%` }}
                       transition={{ duration: 0.35, ease: 'easeOut' }}
                       className="flex h-full flex-col"
                     >
                       {storyStages.map((stage, index) => (
-                        <div key={stage.label} className="flex h-full min-h-0 shrink-0 flex-col justify-center p-8">
+                        <div key={stage.label} className="flex h-full min-h-0 shrink-0 flex-col justify-center p-10">
                           <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-cyan-200/70">{stage.label}</p>
                           <h3 className="mt-4 text-3xl font-bold text-white">{stage.title}</h3>
-                          <p className="mt-4 max-w-md text-base leading-relaxed text-slate-300">{stage.body}</p>
+                          <p className="mt-5 max-w-lg text-base leading-8 text-slate-300">{stage.body}</p>
 
-                          <div className="mt-8 h-2 overflow-hidden rounded-full bg-white/8">
+                          <div className="mt-10 h-2 overflow-hidden rounded-full bg-white/8">
                             <div
                               className="h-full rounded-full bg-gradient-to-r from-violet-400 via-cyan-300 to-emerald-300 transition-[width] duration-300"
                               style={{ width: `${Math.max(8, panelStates[index] * 100)}%` }}
@@ -286,8 +286,8 @@ export default function Interactive() {
                         </div>
                       ))}
 
-                      <div className="flex h-full min-h-0 shrink-0 flex-col justify-center gap-5 p-6 xl:p-8">
-                        <div className="theme-surface-overlay rounded-[1.75rem] p-5 xl:p-6">
+                      <div className="flex h-full min-h-0 shrink-0 flex-col justify-center gap-6 p-8 xl:p-10">
+                        <div className="theme-surface-overlay rounded-[2rem] p-6 xl:p-7">
                           <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-emerald-200/70">Message in focus</p>
                           <span className={`mt-4 inline-flex rounded-full border px-3 py-1 text-[10px] font-bold uppercase tracking-[0.24em] ${themeAccents[highlightedMessage.theme]}`}>
                             {highlightedMessage.theme}
@@ -296,7 +296,7 @@ export default function Interactive() {
                           <p className="mt-3 text-sm text-slate-400">{highlightedMessage.origin}</p>
                         </div>
 
-                        <div className="grid gap-3 sm:grid-cols-2">
+                        <div className="grid gap-4 sm:grid-cols-2">
                           {peaceMessages.slice(0, 4).map((message) => (
                             <div
                               key={message.text}
