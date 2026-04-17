@@ -224,69 +224,24 @@ function HeroParticles({
   )
 }
 
-export default function HeroScene() {
-  const pointerRef = useRef<PointerState>({
-    x: 0,
-    y: 0,
-    targetX: 0,
-    targetY: 0,
-    vx: 0,
-    vy: 0,
-    motion: 0,
-    active: false,
-  })
-  const pulseRef = useRef<PulseState>({ x: 0, y: 0, strength: 0 })
-  const convergenceRef = useRef(0)
-
-  function handlePointerMove(event: React.PointerEvent<HTMLDivElement>) {
-    const rect = event.currentTarget.getBoundingClientRect()
-    const x = ((event.clientX - rect.left) / rect.width) * 2 - 1
-    const y = -(((event.clientY - rect.top) / rect.height) * 2 - 1)
-    const pointer = pointerRef.current
-    const deltaX = x - pointer.targetX
-    const deltaY = y - pointer.targetY
-    const motion = Math.min(1, Math.hypot(deltaX, deltaY) * 3.2)
-
-    pointer.targetX = x
-    pointer.targetY = y
-    pointer.vx = THREE.MathUtils.clamp(deltaX * 2.4, -1, 1)
-    pointer.vy = THREE.MathUtils.clamp(deltaY * 2.4, -1, 1)
-    pointer.motion = Math.max(pointer.motion, motion)
-    pointer.active = true
-  }
-
-  function handlePointerLeave() {
-    const pointer = pointerRef.current
-    pointer.targetX = 0
-    pointer.targetY = 0
-    pointer.motion = Math.min(pointer.motion, 0.18)
-    pointer.active = false
-  }
-
-  function handleClick() {
-    const pointer = pointerRef.current
-    pulseRef.current.x = pointer.x * 2.6
-    pulseRef.current.y = pointer.y * 1.45
-    pulseRef.current.strength = 1
-    convergenceRef.current = 1
-  }
-
+export default function HeroScene({
+  pointerRef,
+  pulseRef,
+  convergenceRef,
+}: {
+  pointerRef: MutableRefObject<PointerState>
+  pulseRef: MutableRefObject<PulseState>
+  convergenceRef: MutableRefObject<number>
+}) {
   return (
-    <div
-      className="absolute inset-0"
-      onPointerMove={handlePointerMove}
-      onPointerLeave={handlePointerLeave}
-      onClick={handleClick}
+    <SceneCanvas
+      className="absolute inset-0 pointer-events-none"
+      camera={{ position: [0, 0, 5.4], fov: 45, near: 0.1, far: 100 }}
     >
-      <SceneCanvas
-        className="absolute inset-0 pointer-events-none"
-        camera={{ position: [0, 0, 5.4], fov: 45, near: 0.1, far: 100 }}
-      >
-        <fog attach="fog" args={['#050611', 4.5, 10]} />
-        <CameraRig pointerRef={pointerRef} convergenceRef={convergenceRef} />
-        <UnityCore convergenceRef={convergenceRef} />
-        <HeroParticles pointerRef={pointerRef} pulseRef={pulseRef} convergenceRef={convergenceRef} />
-      </SceneCanvas>
-    </div>
+      <fog attach="fog" args={['#050611', 4.5, 10]} />
+      <CameraRig pointerRef={pointerRef} convergenceRef={convergenceRef} />
+      <UnityCore convergenceRef={convergenceRef} />
+      <HeroParticles pointerRef={pointerRef} pulseRef={pulseRef} convergenceRef={convergenceRef} />
+    </SceneCanvas>
   )
 }

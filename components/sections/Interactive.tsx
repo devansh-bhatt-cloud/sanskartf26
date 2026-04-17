@@ -37,7 +37,7 @@ const storyStages = [
   },
 ] as const
 
-const desktopSlideCount = storyStages.length + 1
+const desktopSlideCount = storyStages.length + 2
 const DESKTOP_STAGE_STEP = 48
 
 function clamp(value: number, min = 0, max = 1) {
@@ -60,9 +60,8 @@ export default function Interactive() {
 
   const highlightedMessage = peaceMessages[Math.min(peaceMessages.length - 1, Math.floor(harmonyProgress * (peaceMessages.length - 1)))]
   const activeStageIndex = Math.min(storyStages.length - 1, Math.floor(harmonyProgress * storyStages.length))
-  const desktopPanelShift = harmonyProgress * (desktopSlideCount - 1) * 100
+  const desktopPanelShift = harmonyProgress * (((desktopSlideCount - 1) / desktopSlideCount) * 100)
   const desktopStageHeight = `calc(100svh + ${(desktopSlideCount - 1) * DESKTOP_STAGE_STEP}svh)`
-  const endingReveal = getPanelProgress(harmonyProgress, 0.82, 1)
 
   const panelStates = useMemo(
     () => [
@@ -308,17 +307,16 @@ export default function Interactive() {
                           ))}
                         </div>
                       </div>
+
+                      <div className="flex h-full min-h-0 shrink-0 flex-col justify-center p-10 xl:p-12">
+                        <div className="theme-surface-overlay rounded-[2rem] p-8 xl:p-10">
+                          {renderEndingContent('mx-auto max-w-4xl text-center')}
+                        </div>
+                      </div>
                     </motion.div>
                   </div>
                 </div>
               </div>
-            </motion.div>
-            <motion.div
-              animate={{ opacity: endingReveal, y: 28 - endingReveal * 28 }}
-              transition={{ duration: 0.35, ease: 'easeOut' }}
-              className="hidden lg:block"
-            >
-              {renderEndingContent('mx-auto max-w-5xl px-4 text-center')}
             </motion.div>
           </div>
         </div>

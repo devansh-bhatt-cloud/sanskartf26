@@ -98,7 +98,7 @@ export default function Understanding() {
               />
 
               <div className="theme-surface-overlay pointer-events-none absolute left-4 top-4 rounded-full px-3 py-2 text-[10px] font-bold uppercase tracking-[0.28em] text-slate-200 backdrop-blur-md sm:left-6 sm:top-6">
-                Tap or hover the network
+                Tap a glowing node
               </div>
             </div>
 

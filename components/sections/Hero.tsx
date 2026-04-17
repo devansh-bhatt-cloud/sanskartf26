@@ -1,7 +1,9 @@
 'use client'
 
+import { useRef } from 'react'
 import dynamic from 'next/dynamic'
 import { motion } from 'framer-motion'
+import * as THREE from 'three'
 import Button from '@/components/ui/Button'
 
 const HeroScene = dynamic(() => import('@/components/three/hero/HeroScene'), {
@@ -25,17 +27,73 @@ const fadeUp = {
 }
 
 export default function Hero() {
+  const pointerRef = useRef({
+    x: 0,
+    y: 0,
+    targetX: 0,
+    targetY: 0,
+    vx: 0,
+    vy: 0,
+    motion: 0,
+    active: false,
+  })
+  const pulseRef = useRef({ x: 0, y: 0, strength: 0 })
+  const convergenceRef = useRef(0)
+
+  function handlePointerMove(event: React.PointerEvent<HTMLElement>) {
+    const rect = event.currentTarget.getBoundingClientRect()
+    const x = ((event.clientX - rect.left) / rect.width) * 2 - 1
+    const y = -(((event.clientY - rect.top) / rect.height) * 2 - 1)
+    const pointer = pointerRef.current
+    const deltaX = x - pointer.targetX
+    const deltaY = y - pointer.targetY
+    const motion = Math.min(1, Math.hypot(deltaX, deltaY) * 3.2)
+
+    pointer.targetX = x
+    pointer.targetY = y
+    pointer.vx = THREE.MathUtils.clamp(deltaX * 2.4, -1, 1)
+    pointer.vy = THREE.MathUtils.clamp(deltaY * 2.4, -1, 1)
+    pointer.motion = Math.max(pointer.motion, motion)
+    pointer.active = true
+  }
+
+  function handlePointerLeave() {
+    const pointer = pointerRef.current
+
+    pointer.targetX = 0
+    pointer.targetY = 0
+    pointer.motion = Math.min(pointer.motion, 0.18)
+    pointer.active = false
+  }
+
+  function handleSceneClick(event: React.MouseEvent<HTMLElement>) {
+    const target = event.target as HTMLElement
+
+    if (target.closest('a, button, input, textarea, select, label')) {
+      return
+    }
+
+    const pointer = pointerRef.current
+    pulseRef.current.x = pointer.x * 2.6
+    pulseRef.current.y = pointer.y * 1.45
+    pulseRef.current.strength = 1
+    convergenceRef.current = 1
+  }
+
   return (
     <section
       id="hero"
       className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[#050611]"
+      onPointerMove={handlePointerMove}
+      onPointerLeave={handlePointerLeave}
+      onClick={handleSceneClick}
     >
       <div className="absolute inset-0 z-0">
-        <HeroScene />
+        <HeroScene pointerRef={pointerRef} pulseRef={pulseRef} convergenceRef={convergenceRef} />
       </div>
 
-      <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_center,transparent_18%,rgba(3,5,12,0.5)_62%,rgba(3,5,12,0.9)_100%)]" />
-      <div className="absolute inset-x-0 bottom-0 z-10 h-40 bg-gradient-to-b from-transparent to-[#0d0208]" />
+      <div className="pointer-events-none absolute inset-0 z-10 bg-[radial-gradient(circle_at_center,transparent_18%,rgba(3,5,12,0.5)_62%,rgba(3,5,12,0.9)_100%)]" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-40 bg-gradient-to-b from-transparent to-[#0d0208]" />
 
       <div className="relative z-20 mx-auto flex w-full max-w-7xl flex-col items-center px-6 pt-28 pb-20 text-center sm:px-8 lg:pt-32">
         <motion.p
