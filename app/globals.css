@@ -324,7 +324,12 @@ html[data-theme='light'] .hero-eyebrow {
 
 html[data-theme='light'] .hero-headline {
   color: #10233c;
-  text-shadow: 0 2px 18px rgba(255, 255, 255, 0.45);
+  font-size: clamp(3.5rem, 8vw, 9rem);
+  text-shadow: none;
+}
+
+html[data-theme='light'] .hero-headline-glow {
+  display: none;
 }
 
 html[data-theme='light'] .hero-copy {

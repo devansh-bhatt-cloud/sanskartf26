@@ -12,7 +12,7 @@ const UnderstandingScene = dynamic(() => import('@/components/three/understandin
   loading: () => <div className="absolute inset-0 rounded-[2rem] bg-[#060812]" />,
 })
 
-const quickPractices = ['Talk first', 'See the other side', 'Teach peace', 'Build shared systems', 'Repair what was broken']
+const quickPractices = ['Stay in the room', 'See the human being', 'Teach what hate hides', 'Build for each other', 'Repair what was broken']
 
 export default function Understanding() {
   const [activeIndex, setActiveIndex] = useState(0)
@@ -36,16 +36,16 @@ export default function Understanding() {
             variants={fadeUp}
             className="eyebrow-label mb-3 text-xs font-bold text-indigo-300"
           >
-            How Peace Takes Shape
+            Recognition
           </motion.p>
           <motion.h2
             variants={fadeUp}
             className="font-display text-4xl leading-tight text-white sm:text-5xl lg:text-6xl"
           >
-            From Understanding to <span className="bg-gradient-to-r from-indigo-300 to-cyan-300 bg-clip-text text-transparent">Repair</span>
+            The Work of <span className="bg-gradient-to-r from-indigo-300 to-cyan-300 bg-clip-text text-transparent">Repair</span>
           </motion.h2>
           <motion.p variants={fadeUp} className="mt-6 text-lg leading-8 text-slate-300">
-            Peace is not a slogan. It is a sequence of choices that turns tension into trust.
+            Repair starts when we recognize what fear has done and choose another way forward.
           </motion.p>
         </motion.div>
 
@@ -58,7 +58,7 @@ export default function Understanding() {
         >
           <div className="theme-surface-card flex flex-col justify-between rounded-[2rem] p-7 sm:p-9">
             <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-cyan-200/70">Turning Point</p>
+              <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-cyan-200/70">Recognition</p>
               <h3 className="font-display mt-4 text-3xl text-white sm:text-4xl">{activeStep.title}</h3>
               <p className="mt-5 text-base leading-8 text-slate-300">{activeStep.description}</p>
 
@@ -98,7 +98,7 @@ export default function Understanding() {
               />
 
               <div className="theme-surface-overlay pointer-events-none absolute left-4 top-4 rounded-full px-3 py-2 text-[10px] font-bold uppercase tracking-[0.28em] text-slate-200 backdrop-blur-md sm:left-6 sm:top-6">
-                Tap a glowing node
+                Tap a turning point
               </div>
             </div>
 
@@ -134,12 +134,12 @@ export default function Understanding() {
           className="mt-20 text-center"
         >
           <p className="text-lg text-slate-300">
-            Understanding matters only if it changes behavior.{' '}
+            Recognition matters only if it becomes action.{' '}
             <a
               href="#interactive"
               className="text-indigo-300 underline underline-offset-4 transition-colors duration-200 hover:text-indigo-200"
             >
-              Test that idea yourself.
+              Try shaping the field.
             </a>
           </p>
         </motion.div>

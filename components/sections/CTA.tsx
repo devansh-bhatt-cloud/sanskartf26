@@ -97,24 +97,24 @@ export default function CTA() {
             variants={fadeUp}
             className="eyebrow-label mb-3 text-xs font-bold text-emerald-400"
           >
-            Your Move
+            Contribution
           </motion.p>
           <motion.h2
             variants={fadeUp}
             className="font-display text-5xl leading-tight text-white sm:text-6xl lg:text-7xl"
           >
-            Carry the <span className="bg-gradient-to-r from-emerald-300 via-teal-300 to-cyan-300 bg-clip-text text-transparent">Story Forward</span>
+            Carry the <span className="bg-gradient-to-r from-emerald-300 via-teal-300 to-cyan-300 bg-clip-text text-transparent">Repair Forward</span>
           </motion.h2>
           <motion.p variants={fadeUp} className="mx-auto mt-8 max-w-3xl text-xl leading-9 text-slate-300">
-            Peace moves when people speak. Leave one message or one suggestion that makes this experience stronger.
+            The journey ends with a choice. Leave one message or one suggestion that helps this work continue.
           </motion.p>
 
           <motion.div variants={fadeUp} className="mt-12 flex flex-col justify-center gap-4 sm:flex-row sm:gap-5">
             <Button href="#interactive" variant="secondary">
-              Revisit the Interactive Field
+              Revisit the Field
             </Button>
             <Button href="#global" variant="ghost">
-              See Global Lessons Again
+              See Global Lessons
             </Button>
           </motion.div>
         </motion.div>
@@ -132,10 +132,10 @@ export default function CTA() {
                 Prompt Bank
               </motion.p>
               <motion.h3 variants={fadeUp} className="font-display mt-4 text-2xl text-white sm:text-3xl">
-                Need a starting point?
+                Need a place to begin?
               </motion.h3>
               <motion.p variants={fadeUp} className="mt-5 text-sm leading-7 text-slate-300">
-                Use a prompt to add a peace message, a critique, or a concrete next step.
+                Use a prompt to add a message, a critique, or a concrete next step.
               </motion.p>
 
               <div className="mt-8 space-y-4">
@@ -154,19 +154,19 @@ export default function CTA() {
               <div className="theme-surface-overlay mt-10 rounded-[1.75rem] p-6">
                 <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-cyan-200/70">What we are asking for</p>
                 <ul className="mt-4 space-y-3 text-sm leading-relaxed text-slate-300">
-                  <li>One truth people need to hear.</li>
-                  <li>One idea that improves this experience.</li>
-                  <li>One story we should examine next.</li>
+                  <li>One truth that should not be avoided.</li>
+                  <li>One idea that makes this experience stronger.</li>
+                  <li>One story of fracture or repair we should examine next.</li>
                 </ul>
               </div>
             </div>
 
             <div className="p-9 lg:p-12">
               <motion.h3 variants={fadeUp} className="font-display text-2xl text-white sm:text-3xl">
-                Share a Message or Suggestion
+                Add Your Voice
               </motion.h3>
               <motion.p variants={fadeUp} className="mt-4 text-sm leading-7 text-slate-400">
-                Send one message, one critique, or one next step.
+                Send one message, one critique, or one next step for repair.
               </motion.p>
 
               <AnimatePresence mode="wait">
@@ -184,7 +184,7 @@ export default function CTA() {
                     </div>
                     <h4 className="mt-6 text-2xl font-bold text-white">Your contribution is in.</h4>
                     <p className="mt-3 max-w-md text-slate-300">
-                      Peace moves forward because people add to it.
+                      Repair moves forward because people add to it.
                     </p>
                     <button
                       type="button"
@@ -265,7 +265,7 @@ export default function CTA() {
                         value={form.message}
                         onChange={handleChange}
                         rows={7}
-                        placeholder="Write a message of peace, a project suggestion, or a story worth including..."
+                        placeholder="Write a message, a project suggestion, or a story of repair worth including..."
                         className={`w-full resize-none rounded-xl border bg-white/5 px-4 py-3 text-white outline-none transition-all duration-200 placeholder:text-slate-500 focus:ring-2 focus:ring-emerald-500/40 ${
                           errors.message ? 'border-red-500/60' : 'border-white/10 focus:border-emerald-500/40'
                         }`}
@@ -298,7 +298,7 @@ export default function CTA() {
                           </motion.span>
                         ) : (
                           <motion.span key="idle" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                            Send Your Contribution
+                            Contribute Your Voice
                           </motion.span>
                         )}
                       </AnimatePresence>
@@ -318,7 +318,7 @@ export default function CTA() {
           className="mt-20 text-center"
         >
           <p className="text-3xl font-light italic leading-relaxed text-slate-200 sm:text-4xl">
-            &ldquo;Peace begins when a voice decides to stay human.&rdquo;
+            &ldquo;Repair begins when a voice refuses to disappear.&rdquo;
           </p>
           <div className="mx-auto mt-6 h-0.5 w-16 bg-gradient-to-r from-transparent via-emerald-400 to-transparent" />
         </motion.div>

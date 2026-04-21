@@ -16,7 +16,15 @@ export default function Navbar() {
   const isLight = theme === "light";
   const navText = isLight ? "text-slate-700 hover:text-slate-950" : "text-slate-400 hover:text-white";
   const activeText = isLight ? "text-slate-950" : "text-white";
-  const navPill = isLight ? "bg-white/88 shadow-[0_12px_30px_-22px_rgba(15,23,42,0.35)] ring-1 ring-slate-900/8" : "bg-white/10";
+  const navGroupSurface = isLight
+    ? "border border-slate-900/10 bg-white/76 shadow-[0_18px_38px_-24px_rgba(15,23,42,0.24)]"
+    : "border border-white/10 bg-slate-950/42 shadow-[0_18px_42px_-28px_rgba(0,0,0,0.45)]";
+  const navLinkChip = isLight
+    ? "border border-transparent bg-white/56 hover:bg-white/82"
+    : "border border-transparent bg-white/[0.03] hover:bg-white/[0.08]";
+  const navActiveOutline = isLight
+    ? "border border-slate-900/14 bg-white shadow-[0_12px_30px_-22px_rgba(15,23,42,0.24)]"
+    : "border border-cyan-300/18 bg-white/[0.08] shadow-[0_12px_30px_-22px_rgba(34,211,238,0.18)]";
   const logoText = isLight ? "text-slate-950" : "text-white";
   const mobileButtonBg = isLight
     ? "border border-slate-900/10 bg-white/76 shadow-[0_16px_34px_-24px_rgba(15,23,42,0.35)] hover:bg-white"
@@ -75,37 +83,20 @@ export default function Navbar() {
     <>
       <motion.header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
-          scrolled && isLight ? "shadow-[0_18px_42px_-30px_rgba(15,23,42,0.28)]" : ""
+          scrolled && isLight ? "shadow-none" : ""
         }`}
         animate={{
-          backgroundColor: scrolled
-            ? isLight
-              ? "rgba(251, 249, 244, 0.84)"
-              : "rgba(5, 2, 8, 0.88)"
-            : "transparent",
-          borderBottomColor: scrolled
-            ? isLight
-              ? "rgba(15, 23, 42, 0.08)"
-              : "rgba(255, 255, 255, 0.07)"
-            : "transparent",
+          backgroundColor: "transparent",
+          borderBottomColor: "transparent",
         }}
         transition={{ duration: 0.35, ease: "easeOut" }}
-        style={{
-          backdropFilter: scrolled ? "blur(20px)" : "none",
-          borderBottom: "1px solid",
-          borderBottomColor: scrolled
-            ? isLight
-              ? "rgba(15,23,42,0.08)"
-              : "rgba(255,255,255,0.07)"
-            : "transparent",
-        }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-18">
             {/* Logo */}
             <a
               href="#hero"
-              className="flex items-center gap-2 group"
+              className={`flex items-center gap-2 rounded-full px-4 py-2.5 backdrop-blur-xl transition-all duration-300 ${navGroupSurface}`}
               onClick={closeMenu}
             >
               <span className="text-lg">🌍</span>
@@ -115,7 +106,7 @@ export default function Navbar() {
             </a>
 
             {/* Desktop nav links */}
-            <nav className="hidden lg:flex items-center gap-1" aria-label="Main navigation">
+            <nav className={`hidden lg:flex items-center gap-2 rounded-full px-2 py-2 backdrop-blur-xl ${navGroupSurface}`} aria-label="Main navigation">
               {navLinks.map((link) => {
                 const sectionId = link.href.replace("#", "");
                 const isActive = activeSection === sectionId;
@@ -124,18 +115,26 @@ export default function Navbar() {
                   <a
                     key={link.href}
                     href={link.href}
-                    className={`relative px-3 py-1.5 text-sm font-medium rounded-full transition-colors duration-200 ${
+                    className={`relative rounded-full px-4 py-2 text-sm font-medium transition-colors duration-250 ${navLinkChip} ${
                       isActive
                         ? activeText
                         : navText
                     }`}
                   >
                     {isActive && (
-                      <motion.span
-                        layoutId="nav-pill"
-                        className={`absolute inset-0 rounded-full ${navPill}`}
-                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                      />
+                      <>
+                        <motion.span
+                          layoutId="nav-pill-fill"
+                          className="absolute inset-0 rounded-full"
+                          style={{ background: isLight ? "rgba(255,255,255,0.92)" : "rgba(255,255,255,0.04)" }}
+                          transition={{ type: "spring", stiffness: 260, damping: 28, mass: 0.8 }}
+                        />
+                        <motion.span
+                          layoutId="nav-pill-outline"
+                          className={`absolute inset-0 rounded-full ${navActiveOutline}`}
+                          transition={{ type: "spring", stiffness: 260, damping: 28, mass: 0.8 }}
+                        />
+                      </>
                     )}
                     <span className="relative z-10">{link.label}</span>
                   </a>
@@ -144,7 +143,7 @@ export default function Navbar() {
             </nav>
 
             {/* Desktop CTA */}
-            <div className="hidden lg:flex items-center gap-3">
+            <div className={`hidden lg:flex items-center gap-3 rounded-full px-3 py-2 backdrop-blur-xl ${navGroupSurface}`}>
               <ThemeToggle />
               <Button href="#cta" variant="secondary">
                 Take Action

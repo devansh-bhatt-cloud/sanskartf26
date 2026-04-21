@@ -22,18 +22,18 @@ const themeAccents = {
 const storyStages = [
   {
     label: 'Phase 01',
-    title: 'Disorder Pushes Back',
-    body: 'The field resists contact, like conflict resists pressure without trust.',
+    title: 'Fracture Pushes Back',
+    body: 'The field resists contact, the way wounded systems resist quick fixes.',
   },
   {
     label: 'Phase 02',
-    title: 'Choice Changes Force',
-    body: 'One click turns disruption into attraction.',
+    title: 'Choice Changes the Pull',
+    body: 'One action shifts the force from rupture toward repair.',
   },
   {
     label: 'Phase 03',
-    title: 'Alignment Emerges',
-    body: 'What was scattered begins to form a shared symbol of peace.',
+    title: 'Repair Starts to Hold',
+    body: 'What was scattered begins to gather around a shared shape.',
   },
 ] as const
 
@@ -121,7 +121,7 @@ export default function Interactive() {
           className="flex h-full flex-col justify-center gap-6 p-8 xl:p-10"
         >
           <div className="theme-surface-overlay rounded-[2rem] p-6 xl:p-7">
-            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-emerald-200/70">Message in focus</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-emerald-200/70">Voice in focus</p>
             <span className={`mt-4 inline-flex rounded-full border px-3 py-1 text-[10px] font-bold uppercase tracking-[0.24em] ${themeAccents[highlightedMessage.theme]}`}>
               {highlightedMessage.theme}
             </span>
@@ -177,12 +177,12 @@ export default function Interactive() {
         viewport={viewportConfig}
         className="text-base text-slate-300"
       >
-        Peace becomes real when people practice it.{' '}
+        Repair becomes real when people practice it.{' '}
         <a
           href="#cta"
           className="text-violet-300 underline underline-offset-4 transition-colors duration-200 hover:text-violet-200"
         >
-          Add one message or one idea.
+          Leave one message or one idea.
         </a>
       </motion.p>
     </div>
@@ -207,7 +207,7 @@ export default function Interactive() {
             variants={fadeUp}
             className="eyebrow-label mb-3 text-xs font-bold text-purple-300"
           >
-            Add to the Chorus
+            Agency
           </motion.p>
           <motion.h2
             variants={fadeUp}
@@ -215,11 +215,11 @@ export default function Interactive() {
           >
             A Field of{' '}
             <span className="bg-gradient-to-r from-violet-300 via-cyan-300 to-emerald-300 bg-clip-text text-transparent">
-              Voices Choosing Peace
+              Choices That Repair
             </span>
           </motion.h2>
           <motion.p variants={fadeUp} className="mt-6 text-lg leading-8 text-slate-300">
-            One action can disturb a system or help align it.
+            This is the hinge of the journey: one action can deepen fracture or begin repair.
           </motion.p>
         </motion.div>
       </div>
@@ -236,7 +236,7 @@ export default function Interactive() {
                     Move to {forceMode}
                   </span>
                   <span className="theme-surface-overlay rounded-full px-3 py-2 text-[10px] font-bold uppercase tracking-[0.28em] text-slate-100 backdrop-blur-md">
-                    Click for ripple
+                    Click to shift the field
                   </span>
                 </div>
 
@@ -285,7 +285,7 @@ export default function Interactive() {
                   transition={{ duration: 0.35, ease: 'easeOut' }}
                    className="theme-surface-card rounded-[2rem] p-7"
                 >
-                  <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-emerald-200/70">Message in focus</p>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-emerald-200/70">Voice in focus</p>
                     <div className="theme-surface-overlay mt-5 rounded-[1.75rem] p-6">
                     <span className={`inline-flex rounded-full border px-3 py-1 text-[10px] font-bold uppercase tracking-[0.24em] ${themeAccents[highlightedMessage.theme]}`}>
                       {highlightedMessage.theme}
@@ -333,7 +333,7 @@ export default function Interactive() {
                       Move to {forceMode}
                     </span>
                     <span className="theme-surface-overlay rounded-full px-3 py-2 text-[10px] font-bold uppercase tracking-[0.28em] text-slate-100 backdrop-blur-md">
-                      Click for ripple
+                      Click to shift the field
                     </span>
                   </div>
 

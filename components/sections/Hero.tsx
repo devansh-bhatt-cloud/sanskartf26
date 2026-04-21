@@ -1,9 +1,10 @@
 'use client'
 
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import dynamic from 'next/dynamic'
 import { motion } from 'framer-motion'
 import * as THREE from 'three'
+import { useTheme } from '@/components/theme/ThemeProvider'
 import Button from '@/components/ui/Button'
 
 const HeroScene = dynamic(() => import('@/components/three/hero/HeroScene'), {
@@ -25,6 +26,8 @@ const fadeUp = {
 }
 
 export default function Hero() {
+  const { theme } = useTheme()
+  const sectionRef = useRef<HTMLElement>(null)
   const pointerRef = useRef({
     x: 0,
     y: 0,
@@ -37,6 +40,31 @@ export default function Hero() {
   })
   const pulseRef = useRef({ x: 0, y: 0, strength: 0 })
   const convergenceRef = useRef(0)
+  const scrollProgressRef = useRef(0)
+
+  useEffect(() => {
+    const updateScrollProgress = () => {
+      const section = sectionRef.current
+      if (!section) {
+        return
+      }
+
+      const start = section.offsetTop
+      const travel = Math.max(section.offsetHeight * 0.92, window.innerHeight * 0.9)
+      const progress = (window.scrollY - start) / travel
+
+      scrollProgressRef.current = THREE.MathUtils.clamp(progress, 0, 1)
+    }
+
+    updateScrollProgress()
+    window.addEventListener('scroll', updateScrollProgress, { passive: true })
+    window.addEventListener('resize', updateScrollProgress)
+
+    return () => {
+      window.removeEventListener('scroll', updateScrollProgress)
+      window.removeEventListener('resize', updateScrollProgress)
+    }
+  }, [])
 
   function handlePointerMove(event: React.PointerEvent<HTMLElement>) {
     const rect = event.currentTarget.getBoundingClientRect()
@@ -81,13 +109,20 @@ export default function Hero() {
   return (
     <section
       id="hero"
+      ref={sectionRef}
       className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[#050611]"
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
       onClick={handleSceneClick}
     >
       <div className="absolute inset-0 z-0">
-        <HeroScene pointerRef={pointerRef} pulseRef={pulseRef} convergenceRef={convergenceRef} />
+        <HeroScene
+          pointerRef={pointerRef}
+          pulseRef={pulseRef}
+          convergenceRef={convergenceRef}
+          scrollProgressRef={scrollProgressRef}
+          theme={theme}
+        />
       </div>
 
       <div className="theme-hero-overlay pointer-events-none absolute inset-0 z-10" />
@@ -101,7 +136,7 @@ export default function Hero() {
           animate="visible"
           custom={0.3}
         >
-          Peace, Examined Under Pressure
+          A Journey Through Fracture and Repair
         </motion.p>
 
         <motion.div
@@ -111,10 +146,10 @@ export default function Hero() {
           custom={0.5}
           className="relative max-w-5xl"
         >
-          <div className="pointer-events-none absolute inset-x-6 top-1/2 -z-10 h-28 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(8,14,28,0.8)_0%,rgba(8,14,28,0.38)_58%,transparent_100%)] blur-3xl sm:h-36 xl:h-44" />
+          <div className="hero-headline-glow pointer-events-none absolute inset-x-6 top-1/2 -z-10 h-28 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(8,14,28,0.8)_0%,rgba(8,14,28,0.38)_58%,transparent_100%)] blur-3xl sm:h-36 xl:h-44" />
           <h1 className="hero-headline font-display text-5xl leading-[0.9] tracking-tight text-white sm:text-6xl md:text-7xl xl:text-[8rem]">
-            <span className="block sm:whitespace-nowrap">Peace and</span>
-            <span className="block sm:whitespace-nowrap">Global Harmony</span>
+            <span className="block sm:whitespace-nowrap">When the</span>
+            <span className="block sm:whitespace-nowrap">World Starts to Break</span>
           </h1>
         </motion.div>
 
@@ -125,7 +160,7 @@ export default function Hero() {
           animate="visible"
           custom={0.9}
         >
-          Conflict spreads fast. Peace survives when people choose each other under pressure.
+          Conflict rarely arrives all at once. Repair begins when someone refuses to let fear lead.
         </motion.p>
 
         <motion.div
@@ -136,7 +171,7 @@ export default function Hero() {
           custom={1.1}
         >
           <Button href="#chaos" variant="primary" className="px-8 py-4 text-base">
-            Start the Journey
+            Enter the Journey
           </Button>
           <Button href="#cta" variant="ghost" className="px-8 py-4 text-base">
             Add Your Voice
@@ -152,21 +187,21 @@ export default function Hero() {
         >
           <div className="theme-surface-card rounded-[1.5rem] p-5 sm:p-6">
             <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-cyan-300/75">Move</p>
-            <p className="mt-2 text-sm text-slate-200">Disturb the field. Feel how fragile order can be.</p>
+            <p className="mt-2 text-sm text-slate-200">Disturb the field. Feel how quickly balance can slip.</p>
           </div>
           <div className="theme-surface-card rounded-[1.5rem] p-5 sm:p-6">
             <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-violet-300/75">Click</p>
-            <p className="mt-2 text-sm text-slate-200">Pull the system toward alignment, for a moment.</p>
+            <p className="mt-2 text-sm text-slate-200">Change the pull. Notice how repair begins.</p>
           </div>
           <div className="theme-surface-card rounded-[1.5rem] p-5 sm:p-6">
             <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-emerald-300/75">Scroll</p>
-            <p className="mt-2 text-sm text-slate-200">Follow the shift from fracture to repair.</p>
+            <p className="mt-2 text-sm text-slate-200">Follow the path from fracture to contribution.</p>
           </div>
         </motion.div>
       </div>
 
       <motion.div
-        className="absolute bottom-8 left-1/2 z-20 -translate-x-1/2 text-center text-white/35"
+        className="absolute bottom-8 left-1/2 z-20 flex w-fit -translate-x-1/2 flex-col items-center text-center text-white/35"
         variants={fadeUp}
         initial="hidden"
         animate="visible"

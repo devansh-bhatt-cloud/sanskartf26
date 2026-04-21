@@ -6,6 +6,8 @@ import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 import SceneCanvas from '@/components/three/core/SceneCanvas'
 
+type Theme = 'light' | 'dark'
+
 type PointerState = {
   x: number
   y: number
@@ -141,16 +143,20 @@ function HeroParticles({
   pointerRef,
   pulseRef,
   convergenceRef,
+  scrollProgressRef,
+  theme,
 }: {
   pointerRef: MutableRefObject<PointerState>
   pulseRef: MutableRefObject<PulseState>
   convergenceRef: MutableRefObject<number>
+  scrollProgressRef: MutableRefObject<number>
+  theme: Theme
 }) {
   const pointsRef = useRef<THREE.Points>(null)
   const materialRef = useRef<THREE.PointsMaterial>(null)
 
   const { basePositions, colors, phases } = useMemo(() => {
-    const count = 1800
+    const count = theme === 'dark' ? 1200 : 1800
     const positions = new Float32Array(count * 3)
     const palette = new Float32Array(count * 3)
     const phaseOffsets = new Float32Array(count)
@@ -182,7 +188,7 @@ function HeroParticles({
     }
 
     return { basePositions: positions, colors: palette, phases: phaseOffsets }
-  }, [])
+  }, [theme])
 
   useFrame(({ clock }, delta) => {
     const points = pointsRef.current
@@ -206,12 +212,15 @@ function HeroParticles({
     const tangentY = pointer.vx
     const pulse = pulseRef.current
     const convergence = convergenceRef.current
+    const scrollProgress = THREE.MathUtils.smoothstep(scrollProgressRef.current, 0, 1)
+    const scrollDrift = THREE.MathUtils.smootherstep(scrollProgress, 0, 1)
 
     for (let i = 0; i < positions.length; i += 3) {
       const baseX = basePositions[i]
       const baseY = basePositions[i + 1]
       const baseZ = basePositions[i + 2]
       const particleIndex = i / 3
+      const baseDistance = Math.hypot(baseX, baseY)
       const dx = baseX - cursorX
       const dy = baseY - cursorY
       const distance = Math.hypot(dx, dy)
@@ -232,21 +241,31 @@ function HeroParticles({
       const pulseDirectionX = pulseDistance > 0.001 ? pulseDx / pulseDistance : 0
       const pulseDirectionY = pulseDistance > 0.001 ? pulseDy / pulseDistance : 0
       const centerPull = convergence * 0.22
+      const outwardX = baseDistance > 0.001 ? baseX / baseDistance : 0
+      const outwardY = baseDistance > 0.001 ? baseY / baseDistance : 0
+      const edgeBias = THREE.MathUtils.clamp(baseDistance / 3.2, 0, 1)
+      const edgeLift = 0.12 + edgeBias * 0.72
+      const spreadX = outwardX * scrollDrift * edgeLift * 1.15
+      const spreadY = outwardY * scrollDrift * edgeLift * 0.82
+      const spreadZ = scrollDrift * (0.05 + edgeBias * 0.16)
 
       const targetX = baseX
         + directionX * wake
         + tangentX * swirl
         - pulseDirectionX * pulseFocus * 0.26
         - baseX * centerPull
+        + spreadX
         + drift
       const targetY = baseY
         + directionY * wake
         + tangentY * swirl
         - pulseDirectionY * pulseFocus * 0.26
         - baseY * centerPull
+        + spreadY
         + shimmer * 0.75
       const targetZ = baseZ
         - baseZ * centerPull
+        - spreadZ
         + focus * (0.06 + pointer.motion * 0.18)
         + pulseFocus * 0.36
         + shimmer
@@ -261,8 +280,8 @@ function HeroParticles({
     points.geometry.attributes.position.needsUpdate = true
     points.rotation.y = time * 0.042 + pointer.x * 0.045
     points.rotation.x = Math.sin(time * 0.18) * 0.06 + pointer.y * 0.03
-    material.size = 0.041 + pointer.motion * 0.008 + pulse.strength * 0.012
-    material.opacity = 0.88 + pulse.strength * 0.08
+    material.size = 0.041 - scrollDrift * 0.004 + pointer.motion * 0.008 + pulse.strength * 0.012
+    material.opacity = 0.88 - scrollDrift * 0.16 + pulse.strength * 0.08
   })
 
   return (
@@ -289,10 +308,14 @@ export default function HeroScene({
   pointerRef,
   pulseRef,
   convergenceRef,
+  scrollProgressRef,
+  theme,
 }: {
   pointerRef: MutableRefObject<PointerState>
   pulseRef: MutableRefObject<PulseState>
   convergenceRef: MutableRefObject<number>
+  scrollProgressRef: MutableRefObject<number>
+  theme: Theme
 }) {
   return (
     <SceneCanvas
@@ -302,7 +325,13 @@ export default function HeroScene({
       <fog attach="fog" args={['#050611', 4.5, 10]} />
       <CameraRig pointerRef={pointerRef} convergenceRef={convergenceRef} />
       <UnityCore convergenceRef={convergenceRef} />
-      <HeroParticles pointerRef={pointerRef} pulseRef={pulseRef} convergenceRef={convergenceRef} />
+      <HeroParticles
+        pointerRef={pointerRef}
+        pulseRef={pulseRef}
+        convergenceRef={convergenceRef}
+        scrollProgressRef={scrollProgressRef}
+        theme={theme}
+      />
     </SceneCanvas>
   )
 }

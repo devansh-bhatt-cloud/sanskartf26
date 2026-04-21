@@ -147,7 +147,7 @@ export default function Data() {
             variants={fadeUp}
             className="eyebrow-label mb-3 text-xs font-bold text-emerald-400"
           >
-            THE SCALE OF THE CHALLENGE
+            Consequence
           </motion.p>
           <motion.h2
             variants={fadeUp}
@@ -155,14 +155,14 @@ export default function Data() {
           >
             What Conflict Costs{" "}
             <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
-              and Peace Protects
+              and Repair Can Protect
             </span>
           </motion.h2>
           <motion.p
             variants={fadeUp}
             className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-400"
           >
-            These numbers make one point clear: conflict is costly, and peace is urgent.
+            The damage is human, measurable, and still unfinished. So is the work of repair.
           </motion.p>
         </motion.div>
 

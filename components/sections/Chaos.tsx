@@ -35,17 +35,16 @@ export default function Chaos() {
             variants={fadeUp}
             className="eyebrow-label mb-3 text-xs font-bold text-red-400"
           >
-            Where Peace Breaks Down
+            Tension
           </motion.p>
           <motion.h2
             variants={fadeUp}
             className="font-display text-4xl leading-tight text-white sm:text-5xl lg:text-6xl"
           >
-            How Harmony <span className="bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">Unravels</span>
+            The Moment Things <span className="bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">Come Apart</span>
           </motion.h2>
           <motion.p variants={fadeUp} className="mt-6 text-lg leading-8 text-slate-300">
-            Peace rarely breaks all at once. It fails through repeatable patterns: fear, scarcity, lies,
-            inequality, and force.
+            Collapse has a pattern. Fear, scarcity, lies, inequality, and force turn pressure into fracture.
           </motion.p>
         </motion.div>
 
@@ -100,12 +99,12 @@ export default function Chaos() {
           className="mt-20 text-center"
         >
           <p className="text-lg text-slate-300">
-            If conflict is built, it can be rebuilt into peace.{' '}
+            Fracture is made by people, which means people can interrupt it.{' '}
             <a
               href="#understanding"
               className="text-violet-300 underline underline-offset-4 transition-colors duration-200 hover:text-violet-200"
             >
-              See what repair looks like.
+              See the turning point.
             </a>
           </p>
         </motion.div>
