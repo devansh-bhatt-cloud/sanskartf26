@@ -222,11 +222,6 @@ html[data-theme='light'] body ::-webkit-scrollbar-thumb:hover {
   text-transform: uppercase;
 }
 
-html[data-theme='light'] .section-kicker {
-  background-color: maroon !important;
-  color: white !important;
-  border-color: rgba(128, 0, 0, 0.3) !important;
-}
 
 .hero-eyebrow {
   border-color: rgba(255, 255, 255, 0.12);
