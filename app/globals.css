@@ -223,7 +223,9 @@ html[data-theme='light'] body ::-webkit-scrollbar-thumb:hover {
 }
 
 html[data-theme='light'] .section-kicker {
-  background-color: maroon;
+  background-color: maroon !important;
+  color: white !important;
+  border-color: rgba(128, 0, 0, 0.3) !important;
 }
 
 .hero-eyebrow {
