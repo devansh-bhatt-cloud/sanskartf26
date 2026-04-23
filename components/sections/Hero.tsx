@@ -186,16 +186,16 @@ export default function Hero() {
           custom={1.35}
         >
           <div className="theme-surface-card rounded-[0.75rem] p-5 sm:p-6">
-            <p className="section-kicker text-[10px] font-medium text-cyan-300/75">Move</p>
-            <p className="mt-2 text-sm text-slate-200">Disturb the field. Feel how quickly balance can slip.</p>
+            <p className="section-kicker text-[10px] font-medium text-cyan-300/75">Unity</p>
+            <p className="mt-2 text-sm text-slate-200">Bringing people together across cultures, differences, and shared human values.</p>
           </div>
           <div className="theme-surface-card rounded-[0.75rem] p-5 sm:p-6">
-            <p className="section-kicker text-[10px] font-medium text-violet-300/75">Click</p>
-            <p className="mt-2 text-sm text-slate-200">Change the pull. Notice how repair begins.</p>
+            <p className="section-kicker text-[10px] font-medium text-violet-300/75">Respect</p>
+            <p className="mt-2 text-sm text-slate-200">Valuing every individual’s identity, beliefs, rights, and diverse perspectives.</p>
           </div>
           <div className="theme-surface-card rounded-[0.75rem] p-5 sm:p-6">
-            <p className="section-kicker text-[10px] font-medium text-emerald-300/75">Scroll</p>
-            <p className="mt-2 text-sm text-slate-200">Follow the path from fracture to contribution.</p>
+            <p className="section-kicker text-[10px] font-medium text-emerald-300/75">Peace</p>
+            <p className="mt-2 text-sm text-slate-200">Promoting understanding, resolving conflicts, and fostering calm coexistence globally.</p>
           </div>
         </motion.div>
       </div>
