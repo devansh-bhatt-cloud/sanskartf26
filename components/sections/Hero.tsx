@@ -1,16 +1,16 @@
-'use client'
+"use client";
 
-import { useEffect, useRef } from 'react'
-import dynamic from 'next/dynamic'
-import { motion } from 'framer-motion'
-import * as THREE from 'three'
-import { useTheme } from '@/components/theme/ThemeProvider'
-import Button from '@/components/ui/Button'
+import { useEffect, useRef } from "react";
+import dynamic from "next/dynamic";
+import { motion } from "framer-motion";
+import * as THREE from "three";
+import { useTheme } from "@/components/theme/ThemeProvider";
+import Button from "@/components/ui/Button";
 
-const HeroScene = dynamic(() => import('@/components/three/hero/HeroScene'), {
+const HeroScene = dynamic(() => import("@/components/three/hero/HeroScene"), {
   ssr: false,
   loading: () => <div className="theme-hero-fallback absolute inset-0" />,
-})
+});
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -23,11 +23,11 @@ const fadeUp = {
       delay,
     },
   }),
-}
+};
 
 export default function Hero() {
-  const { theme } = useTheme()
-  const sectionRef = useRef<HTMLElement>(null)
+  const { theme } = useTheme();
+  const sectionRef = useRef<HTMLElement>(null);
   const pointerRef = useRef({
     x: 0,
     y: 0,
@@ -37,73 +37,76 @@ export default function Hero() {
     vy: 0,
     motion: 0,
     active: false,
-  })
-  const pulseRef = useRef({ x: 0, y: 0, strength: 0 })
-  const convergenceRef = useRef(0)
-  const scrollProgressRef = useRef(0)
+  });
+  const pulseRef = useRef({ x: 0, y: 0, strength: 0 });
+  const convergenceRef = useRef(0);
+  const scrollProgressRef = useRef(0);
 
   useEffect(() => {
     const updateScrollProgress = () => {
-      const section = sectionRef.current
+      const section = sectionRef.current;
       if (!section) {
-        return
+        return;
       }
 
-      const start = section.offsetTop
-      const travel = Math.max(section.offsetHeight * 0.92, window.innerHeight * 0.9)
-      const progress = (window.scrollY - start) / travel
+      const start = section.offsetTop;
+      const travel = Math.max(
+        section.offsetHeight * 0.92,
+        window.innerHeight * 0.9,
+      );
+      const progress = (window.scrollY - start) / travel;
 
-      scrollProgressRef.current = THREE.MathUtils.clamp(progress, 0, 1)
-    }
+      scrollProgressRef.current = THREE.MathUtils.clamp(progress, 0, 1);
+    };
 
-    updateScrollProgress()
-    window.addEventListener('scroll', updateScrollProgress, { passive: true })
-    window.addEventListener('resize', updateScrollProgress)
+    updateScrollProgress();
+    window.addEventListener("scroll", updateScrollProgress, { passive: true });
+    window.addEventListener("resize", updateScrollProgress);
 
     return () => {
-      window.removeEventListener('scroll', updateScrollProgress)
-      window.removeEventListener('resize', updateScrollProgress)
-    }
-  }, [])
+      window.removeEventListener("scroll", updateScrollProgress);
+      window.removeEventListener("resize", updateScrollProgress);
+    };
+  }, []);
 
   function handlePointerMove(event: React.PointerEvent<HTMLElement>) {
-    const rect = event.currentTarget.getBoundingClientRect()
-    const x = ((event.clientX - rect.left) / rect.width) * 2 - 1
-    const y = -(((event.clientY - rect.top) / rect.height) * 2 - 1)
-    const pointer = pointerRef.current
-    const deltaX = x - pointer.targetX
-    const deltaY = y - pointer.targetY
-    const motion = Math.min(1, Math.hypot(deltaX, deltaY) * 3.2)
+    const rect = event.currentTarget.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+    const y = -(((event.clientY - rect.top) / rect.height) * 2 - 1);
+    const pointer = pointerRef.current;
+    const deltaX = x - pointer.targetX;
+    const deltaY = y - pointer.targetY;
+    const motion = Math.min(1, Math.hypot(deltaX, deltaY) * 3.2);
 
-    pointer.targetX = x
-    pointer.targetY = y
-    pointer.vx = THREE.MathUtils.clamp(deltaX * 2.4, -1, 1)
-    pointer.vy = THREE.MathUtils.clamp(deltaY * 2.4, -1, 1)
-    pointer.motion = Math.max(pointer.motion, motion)
-    pointer.active = true
+    pointer.targetX = x;
+    pointer.targetY = y;
+    pointer.vx = THREE.MathUtils.clamp(deltaX * 2.4, -1, 1);
+    pointer.vy = THREE.MathUtils.clamp(deltaY * 2.4, -1, 1);
+    pointer.motion = Math.max(pointer.motion, motion);
+    pointer.active = true;
   }
 
   function handlePointerLeave() {
-    const pointer = pointerRef.current
+    const pointer = pointerRef.current;
 
-    pointer.targetX = 0
-    pointer.targetY = 0
-    pointer.motion = Math.min(pointer.motion, 0.18)
-    pointer.active = false
+    pointer.targetX = 0;
+    pointer.targetY = 0;
+    pointer.motion = Math.min(pointer.motion, 0.18);
+    pointer.active = false;
   }
 
   function handleSceneClick(event: React.MouseEvent<HTMLElement>) {
-    const target = event.target as HTMLElement
+    const target = event.target as HTMLElement;
 
-    if (target.closest('a, button, input, textarea, select, label')) {
-      return
+    if (target.closest("a, button, input, textarea, select, label")) {
+      return;
     }
 
-    const pointer = pointerRef.current
-    pulseRef.current.x = pointer.x * 2.6
-    pulseRef.current.y = pointer.y * 1.45
-    pulseRef.current.strength = 1
-    convergenceRef.current = 1
+    const pointer = pointerRef.current;
+    pulseRef.current.x = pointer.x * 2.6;
+    pulseRef.current.y = pointer.y * 1.45;
+    pulseRef.current.strength = 1;
+    convergenceRef.current = 1;
   }
 
   return (
@@ -136,7 +139,7 @@ export default function Hero() {
           animate="visible"
           custom={0.3}
         >
-          A Journey Through Fracture and Repair
+          A Human Journey Through Hurt and Healing
         </motion.p>
 
         <motion.div
@@ -148,8 +151,12 @@ export default function Hero() {
         >
           <div className="hero-headline-glow pointer-events-none absolute inset-x-6 top-1/2 -z-10 h-28 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(8,14,28,0.8)_0%,rgba(8,14,28,0.38)_58%,transparent_100%)] blur-3xl sm:h-36 xl:h-44" />
           <h1 className="hero-headline font-display text-5xl leading-[0.9] tracking-tight text-white sm:text-6xl md:text-7xl xl:text-[8rem]">
-            <span className="block sm:whitespace-nowrap">When the</span>
-            <span className="block sm:whitespace-nowrap">World Starts to Break</span>
+            <span className="block sm:whitespace-nowrap">
+              Peace Begins When
+            </span>
+            <span className="block sm:whitespace-nowrap">
+              We Care Enough to Listen
+            </span>
           </h1>
         </motion.div>
 
@@ -160,7 +167,10 @@ export default function Hero() {
           animate="visible"
           custom={0.9}
         >
-          "He who lives in harmony with himself lives in harmony with the universe.”  -  Marcus Aurelius
+          “He who lives in harmony with himself lives in harmony with the
+          universe.” — Marcus Aurelius. Hurt rarely appears all at once; healing
+          often begins when one person slows down, listens, and refuses to let
+          fear speak for everyone.
         </motion.p>
 
         <motion.div
@@ -170,11 +180,15 @@ export default function Hero() {
           animate="visible"
           custom={1.1}
         >
-          <Button href="#chaos" variant="primary" className="px-8 py-4 text-base">
-            Enter the Journey
+          <Button
+            href="#chaos"
+            variant="primary"
+            className="px-8 py-4 text-base"
+          >
+            See Why Conflict Starts
           </Button>
           <Button href="#cta" variant="ghost" className="px-8 py-4 text-base">
-            Take Part
+            Share a Thought
           </Button>
         </motion.div>
 
@@ -186,16 +200,34 @@ export default function Hero() {
           custom={1.35}
         >
           <div className="theme-surface-card rounded-[0.75rem] p-5 sm:p-6">
-            <p className="section-kicker text-[10px] font-medium text-cyan-300/75">Unity</p>
-            <p className="mt-2 text-sm text-slate-200">Bringing people together across cultures, differences, and shared human values.</p>
+            <p className="section-kicker text-[10px] font-medium text-cyan-300/75">
+              Unity
+            </p>
+            <p className="mt-2 text-sm text-slate-200">
+              Bringing people together across cultures, differences, and shared
+              human values. Move the field and notice how quickly calm can start
+              to slip away.
+            </p>
           </div>
           <div className="theme-surface-card rounded-[0.75rem] p-5 sm:p-6">
-            <p className="section-kicker text-[10px] font-medium text-violet-300/75">Respect</p>
-            <p className="mt-2 text-sm text-slate-200">Valuing every individual’s identity, beliefs, rights, and diverse perspectives.</p>
+            <p className="section-kicker text-[10px] font-medium text-violet-300/75">
+              Respect
+            </p>
+            <p className="mt-2 text-sm text-slate-200">
+              Valuing every individual’s identity, beliefs, rights, and diverse
+              perspectives. Click to change the pull and see how care can begin
+              to steady things.
+            </p>
           </div>
           <div className="theme-surface-card rounded-[0.75rem] p-5 sm:p-6">
-            <p className="section-kicker text-[10px] font-medium text-emerald-300/75">Peace</p>
-            <p className="mt-2 text-sm text-slate-200">Promoting understanding, resolving conflicts, and fostering calm coexistence globally.</p>
+            <p className="section-kicker text-[10px] font-medium text-emerald-300/75">
+              Peace
+            </p>
+            <p className="mt-2 text-sm text-slate-200">
+              Promoting understanding, resolving conflicts, and fostering calm
+              coexistence globally. Scroll from hurt to healing, then leave one
+              thought of your own.
+            </p>
           </div>
         </motion.div>
       </div>
@@ -210,14 +242,25 @@ export default function Hero() {
         <p className="section-kicker text-[10px] font-medium">Scroll</p>
         <motion.div
           animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+          transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
           className="mt-2"
         >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-            <polyline points="6 9 12 15 18 9" strokeLinecap="round" strokeLinejoin="round" />
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.8"
+          >
+            <polyline
+              points="6 9 12 15 18 9"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </motion.div>
       </motion.div>
     </section>
-  )
+  );
 }

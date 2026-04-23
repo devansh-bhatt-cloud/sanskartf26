@@ -21,19 +21,19 @@ const themeAccents = {
 
 const storyStages = [
   {
-    label: 'Phase 01',
-    title: 'Fracture Pushes Back',
-    body: 'The field resists contact, the way wounded systems resist quick fixes.',
+    label: 'Moment 01',
+    title: 'Hurt Pushes Back',
+    body: 'The field resists contact, the way wounded people and communities often do at first.',
   },
   {
-    label: 'Phase 02',
-    title: 'Choice Changes the Pull',
-    body: 'One action shifts the force from rupture toward repair.',
+    label: 'Moment 02',
+    title: 'A Choice Changes the Pull',
+    body: 'One action can make things harsher, or begin to bring them back toward calm.',
   },
   {
-    label: 'Phase 03',
-    title: 'Repair Starts to Hold',
-    body: 'What was scattered begins to gather around a shared shape.',
+    label: 'Moment 03',
+    title: 'Calm Begins to Hold',
+    body: 'What was scattered begins to gather around something shared and steady.',
   },
 ] as const
 
@@ -121,7 +121,7 @@ export default function Interactive() {
           className="flex h-full flex-col justify-center gap-6 p-8 xl:p-10"
         >
           <div className="theme-surface-overlay rounded-[0.5rem] p-6 xl:p-7">
-            <p className="section-kicker text-[10px] font-medium text-emerald-200/70">Voice in focus</p>
+            <p className="section-kicker text-[10px] font-medium text-emerald-200/70">A voice to keep in mind</p>
             <span className={`mt-4 inline-flex rounded-full border px-3 py-1 text-[10px] font-medium ${themeAccents[highlightedMessage.theme]}`}>
               {highlightedMessage.theme}
             </span>
@@ -177,12 +177,12 @@ export default function Interactive() {
         viewport={viewportConfig}
         className="text-base text-slate-300"
       >
-        Repair becomes real when people practice it.{' '}
+        Healing becomes real when people practice it in small, steady ways.{' '}
         <a
           href="#cta"
           className="text-violet-300 underline underline-offset-4 transition-colors duration-200 hover:text-violet-200"
         >
-          Leave one message or one idea.
+          Share one message, memory, concern, or suggestion.
         </a>
       </motion.p>
     </div>
@@ -207,16 +207,16 @@ export default function Interactive() {
             variants={fadeUp}
             className="eyebrow-label mb-3 text-xs font-bold text-purple-300"
           >
-            Agency
+            Choices
           </motion.p>
           <motion.h2
             variants={fadeUp}
             className="premium-heading text-4xl leading-tight text-white sm:text-5xl lg:text-6xl"
           >
-            A Field of <span className="text-cyan-200">Choices That Repair</span>
+            Every Choice Can <span className="text-cyan-200">Calm or Hurt</span>
           </motion.h2>
           <motion.p variants={fadeUp} className="mt-6 text-lg leading-8 text-slate-300">
-            This is the hinge of the journey: one action can deepen fracture or begin repair.
+            This part of the journey is simple: what we say and do can make pain worse, or help people feel safe enough to trust again.
           </motion.p>
         </motion.div>
       </div>
@@ -230,10 +230,10 @@ export default function Interactive() {
 
                 <div className="pointer-events-none absolute left-4 top-4 flex flex-wrap gap-2 sm:left-6 sm:top-6">
                   <span className="theme-surface-overlay rounded-full px-3 py-2 text-[10px] font-medium text-slate-100 backdrop-blur-md">
-                    Move to {forceMode}
+                    Move to {forceMode === 'repel' ? 'push apart' : 'draw closer'}
                   </span>
                   <span className="theme-surface-overlay rounded-full px-3 py-2 text-[10px] font-medium text-slate-100 backdrop-blur-md">
-                    Click to shift the field
+                    Click to change the feeling
                   </span>
                 </div>
 
@@ -282,7 +282,7 @@ export default function Interactive() {
                   transition={{ duration: 0.35, ease: 'easeOut' }}
                    className="theme-surface-card rounded-[0.75rem] p-7"
                 >
-                  <p className="section-kicker text-[10px] font-medium text-emerald-200/70">Voice in focus</p>
+                  <p className="section-kicker text-[10px] font-medium text-emerald-200/70">A voice to keep in mind</p>
                     <div className="theme-surface-overlay mt-5 rounded-[0.5rem] p-6">
                     <span className={`inline-flex rounded-full border px-3 py-1 text-[10px] font-medium ${themeAccents[highlightedMessage.theme]}`}>
                       {highlightedMessage.theme}
@@ -327,10 +327,10 @@ export default function Interactive() {
 
                   <div className="pointer-events-none absolute left-4 top-4 flex flex-wrap gap-2 sm:left-6 sm:top-6">
                     <span className="theme-surface-overlay rounded-full px-3 py-2 text-[10px] font-medium text-slate-100 backdrop-blur-md">
-                      Move to {forceMode}
+                      Move to {forceMode === 'repel' ? 'push apart' : 'draw closer'}
                     </span>
                     <span className="theme-surface-overlay rounded-full px-3 py-2 text-[10px] font-medium text-slate-100 backdrop-blur-md">
-                      Click to shift the field
+                      Click to change the feeling
                     </span>
                   </div>
 

@@ -12,33 +12,33 @@ const UnderstandingScene = dynamic(() => import('@/components/three/understandin
   loading: () => <div className="absolute inset-0 rounded-[2rem] bg-[#060812]" />,
 })
 
-const quickPractices = ['Stay in the room', 'See the human being', 'Teach what hate hides', 'Build for each other', 'Repair what was broken']
+const quickPractices = ['Stay and listen', 'See the person', 'Teach what fear hides', 'Build everyday trust', 'Name the hurt']
 
 const repairVisuals = [
   {
-    label: 'Dialogue held open',
-    marker: 'Shared room',
-    description: 'Two sides stay inside one boundary long enough for a line to form.',
+    label: 'Listening stays open',
+    marker: 'Same room',
+    description: 'People stay in the same space long enough for trust to begin again.',
   },
   {
-    label: 'Dignity recognized',
-    marker: 'Human center',
-    description: 'Opposing outlines align around the same human signal.',
+    label: 'The human being comes first',
+    marker: 'Shared humanity',
+    description: 'Different sides begin to gather around the same human center.',
   },
   {
-    label: 'Hate examined',
+    label: 'Fear is questioned',
     marker: 'Learning path',
-    description: 'Hidden fragments become named, ordered, and easier to challenge.',
+    description: 'Hidden stories are named clearly so they can be challenged with care.',
   },
   {
-    label: 'Systems rebuilt',
-    marker: 'Shared structure',
-    description: 'Separate supports become one bridge that can carry people together.',
+    label: 'Trust is built into daily life',
+    marker: 'Shared support',
+    description: 'Separate supports begin to act like one bridge carrying people together.',
   },
   {
-    label: 'Truth repaired',
-    marker: 'Accountability',
-    description: 'The fracture stays visible while the circle closes around it.',
+    label: 'Truth is faced with care',
+    marker: 'Making things right',
+    description: 'The hurt is not hidden while the circle slowly closes around it.',
   },
 ]
 
@@ -305,16 +305,16 @@ export default function Understanding() {
             variants={fadeUp}
             className="eyebrow-label mb-3 text-xs font-bold text-indigo-300"
           >
-            Recognition
+            Healing
           </motion.p>
           <motion.h2
             variants={fadeUp}
             className="premium-heading text-4xl leading-tight text-white sm:text-5xl lg:text-6xl"
           >
-            The Work of <span className="text-cyan-200">Repair</span>
+            How <span className="text-cyan-200">Healing Begins</span>
           </motion.h2>
           <motion.p variants={fadeUp} className="mt-6 text-lg leading-8 text-slate-300">
-            Repair starts when we recognize what fear has done and choose another way forward.
+            Healing begins when people tell the truth about hurt, keep listening, and choose a kinder way forward.
           </motion.p>
         </motion.div>
 
@@ -329,7 +329,7 @@ export default function Understanding() {
             <div>
               <RepairVisual activeIndex={activeIndex} />
 
-              <p className="section-kicker mt-8 text-[10px] font-medium text-cyan-200/70">Recognition</p>
+              <p className="section-kicker mt-8 text-[10px] font-medium text-cyan-200/70">How healing starts</p>
               <h3 className="premium-heading mt-4 text-3xl text-white sm:text-4xl">{activeStep.title}</h3>
               <p className="mt-5 text-base leading-8 text-slate-300">{activeStep.description}</p>
 
@@ -342,7 +342,7 @@ export default function Understanding() {
             </div>
 
             <div className="mt-10">
-              <p className="section-kicker text-[10px] font-medium text-indigo-200/65">Practices of repair</p>
+              <p className="section-kicker text-[10px] font-medium text-indigo-200/65">Small practices that rebuild trust</p>
               <div className="mt-5 flex flex-wrap gap-3">
                 {quickPractices.map((practice, index) => (
                   <span
@@ -369,7 +369,7 @@ export default function Understanding() {
               />
 
               <div className="theme-surface-overlay pointer-events-none absolute left-4 top-4 rounded-full px-3 py-2 text-[10px] font-bold uppercase tracking-[0.28em] text-slate-200 backdrop-blur-md sm:left-6 sm:top-6">
-                Tap a node
+                Tap a step
               </div>
             </div>
 
@@ -405,12 +405,12 @@ export default function Understanding() {
           className="mt-20 text-center"
         >
           <p className="text-lg text-slate-300">
-            Recognition matters only if it becomes action.{' '}
+            Healing only matters if it changes how we act.{' '}
             <a
               href="#interactive"
               className="text-indigo-300 underline underline-offset-4 transition-colors duration-200 hover:text-indigo-200"
             >
-              Try shaping the field.
+              Try the choices section.
             </a>
           </p>
         </motion.div>

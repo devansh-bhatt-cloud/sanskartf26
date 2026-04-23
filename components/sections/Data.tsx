@@ -147,19 +147,19 @@ export default function Data() {
             variants={fadeUp}
             className="eyebrow-label mb-3 text-xs font-bold text-emerald-400"
           >
-            Consequence
+            The Cost
           </motion.p>
           <motion.h2
             variants={fadeUp}
             className="premium-heading text-4xl leading-tight text-white sm:text-5xl lg:text-6xl"
           >
-            What Conflict Costs <span className="text-emerald-200">and Repair Can Protect</span>
+            What War Takes <span className="text-emerald-200">From Families</span>
           </motion.h2>
           <motion.p
             variants={fadeUp}
             className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-400"
           >
-            The damage is human, measurable, and still unfinished. So is the work of repair.
+            These numbers are not only statistics. They point to homes lost, routines broken, savings drained, and lives changed for years.
           </motion.p>
         </motion.div>
 
@@ -185,8 +185,8 @@ export default function Data() {
           className="mx-auto mt-16 max-w-xl text-center text-xs text-slate-600"
         >
           Sources: UNHCR, World Bank, Institute for Economics & Peace, United
-          Nations, Stockholm International Peace Research Institute (SIPRI).
-          Data reflects 2023-2024 estimates and is directional, not final.
+          Nations, and Stockholm International Peace Research Institute (SIPRI).
+          These 2023-2024 estimates are here to show the human scale of loss, not a final count.
         </motion.p>
       </div>
     </SectionWrapper>

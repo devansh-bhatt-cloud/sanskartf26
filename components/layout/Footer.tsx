@@ -55,7 +55,7 @@ export default function Footer() {
               </p>
             </div>
             <p className={`text-sm ${isLight ? "text-slate-600" : "text-slate-400"}`}>
-              An interactive experience in repair
+              A gentle, source-backed experience about hurt, healing, and peace
             </p>
           </motion.div>
 

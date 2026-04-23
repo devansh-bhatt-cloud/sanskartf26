@@ -104,7 +104,7 @@ export default function Navbar() {
                 <Glyph name="harmony" className="h-4 w-4" title="Harmony" />
               </span>
               <span className={`font-black tracking-widest text-sm uppercase ${logoText}`}>
-                HARMONY
+                PEACE
               </span>
             </a>
 
@@ -149,7 +149,7 @@ export default function Navbar() {
             <div className={`hidden lg:flex items-center gap-3 rounded-full px-3 py-2 backdrop-blur-xl ${navGroupSurface}`}>
               <ThemeToggle />
               <Button href="#cta" variant="secondary">
-                Take Action
+                Share a Thought
               </Button>
             </div>
 
@@ -240,7 +240,7 @@ export default function Navbar() {
                 className="w-full mt-4"
               >
                 <Button href="#cta" variant="secondary" className="w-full">
-                  Take Action
+                  Share a Thought
                 </Button>
               </motion.div>
             </nav>
@@ -248,7 +248,7 @@ export default function Navbar() {
             {/* Decorative */}
             <div className={`absolute bottom-12 flex items-center gap-2 text-xs tracking-[0.24em] uppercase ${isLight ? "text-slate-500" : "text-slate-600"}`}>
               <Glyph name="harmony" className="h-3.5 w-3.5" />
-              <span>Peace &amp; Global Harmony</span>
+              <span>Peace, Home, and Community</span>
             </div>
           </motion.div>
         )}

@@ -36,16 +36,16 @@ export default function Chaos() {
             variants={fadeUp}
             className="eyebrow-label mb-3 text-xs font-bold text-red-400"
           >
-            Tension
+            Why Conflict Starts
           </motion.p>
           <motion.h2
             variants={fadeUp}
             className="premium-heading text-4xl leading-tight text-white sm:text-5xl lg:text-6xl"
           >
-            The Moment Things <span className="text-red-300">Come Apart</span>
+            When Peace Starts <span className="text-red-300">Slipping Away</span>
           </motion.h2>
           <motion.p variants={fadeUp} className="mt-6 text-lg leading-8 text-slate-300">
-            Collapse has a pattern. Fear, scarcity, lies, inequality, and force turn pressure into fracture.
+            Peace usually slips away in familiar ways: fear grows, lies spread, people feel left behind, and hurt turns into harm.
           </motion.p>
         </motion.div>
 
@@ -70,7 +70,7 @@ export default function Chaos() {
                     <Glyph name={card.icon} className="h-6 w-6" title={card.title} />
                   </span>
                   <span className="section-kicker rounded-full border border-red-400/16 bg-red-500/8 px-3 py-1 text-[10px] font-medium text-red-200/70">
-                    Pattern {card.id}
+                    Reason {card.id}
                   </span>
                 </div>
 
@@ -86,7 +86,7 @@ export default function Chaos() {
                 )}
 
                 <div className="theme-surface-overlay rounded-[0.75rem] p-5">
-                  <p className="section-kicker text-[10px] font-medium text-orange-200/70">Path forward</p>
+                  <p className="section-kicker text-[10px] font-medium text-orange-200/70">A gentler way forward</p>
                   <p className="mt-2 text-sm text-slate-200">{card.pathForward}</p>
                 </div>
               </div>
@@ -102,12 +102,12 @@ export default function Chaos() {
           className="mt-20 text-center"
         >
           <p className="text-lg text-slate-300">
-            Fracture is made by people, which means people can interrupt it.{' '}
+            If people can pull peace apart, people can also help hold it together again.{' '}
             <a
               href="#understanding"
               className="text-violet-300 underline underline-offset-4 transition-colors duration-200 hover:text-violet-200"
             >
-              See the turning point.
+              See how healing begins.
             </a>
           </p>
         </motion.div>

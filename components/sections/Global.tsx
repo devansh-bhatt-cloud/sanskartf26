@@ -63,16 +63,16 @@ export default function Global() {
             variants={fadeUp}
             className="eyebrow-label mb-3 text-xs font-bold text-cyan-400"
           >
-            Repair in Practice
+            Around the World
           </motion.p>
           <motion.h2
             variants={fadeUp}
             className="premium-heading text-4xl leading-tight text-white sm:text-5xl lg:text-6xl"
           >
-            How the World Practices <span className="text-cyan-200">Repair</span>
+            How People Around the World <span className="text-cyan-200">Rebuild Trust</span>
           </motion.h2>
           <motion.p variants={fadeUp} className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-400">
-            No region heals the same way, but each shows that repair becomes real when people keep choosing it.
+            No community heals in exactly the same way, but each one shows that trust can come back when people keep choosing it.
           </motion.p>
         </motion.div>
       </div>
@@ -89,7 +89,7 @@ export default function Global() {
             <div className="flex flex-row gap-2 overflow-x-auto pb-2 lg:w-60 lg:flex-shrink-0 lg:flex-col lg:overflow-visible lg:pb-0">
               <div className="theme-surface-card hidden rounded-[0.75rem] p-5 lg:block">
                 <p className="section-kicker text-[10px] font-medium text-cyan-200/65">Scroll to move</p>
-                <p className="mt-3 text-sm leading-relaxed text-slate-300">Tap any region to see how repair takes root there.</p>
+                <p className="mt-3 text-sm leading-relaxed text-slate-300">Tap any region to see how people there have tried to rebuild trust.</p>
               </div>
 
               {globalRegions.map((region, index) => {
@@ -147,7 +147,7 @@ export default function Global() {
                    }}
                 >
                   <div className="section-kicker mb-5 flex items-center justify-between gap-4 text-[10px] font-medium text-slate-400">
-                    <span>Global Lesson {activeIndex + 1} / {globalRegions.length}</span>
+                    <span>World lesson {activeIndex + 1} / {globalRegions.length}</span>
                     <span>Scroll or tap</span>
                   </div>
 
@@ -179,7 +179,7 @@ export default function Global() {
 
                   <div>
                     <p className="section-kicker mb-4 text-xs font-medium" style={{ color: active.color + 'cc' }}>
-                      What This Region Reveals
+                      What People Here Have Tried
                     </p>
                     <ul className="space-y-4">
                       {active.efforts.map((effort, i) => (
@@ -199,7 +199,7 @@ export default function Global() {
 
                    <div className="theme-surface-card mt-10 rounded-[0.5rem] p-6">
                     <p className="section-kicker mb-2 text-xs font-medium" style={{ color: active.color + 'cc' }}>
-                      Carry Forward
+                      What We Can Carry Forward
                     </p>
                     <p className="text-sm leading-relaxed text-slate-300">{active.lesson}</p>
                   </div>

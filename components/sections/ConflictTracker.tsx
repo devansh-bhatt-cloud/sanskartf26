@@ -14,8 +14,8 @@ const severityTone: Record<ConflictCase['severity'], string> = {
 }
 
 const statusCopy: Record<ConflictStatus, string> = {
-  active: 'Active conflicts',
-  repair: 'Repair cases',
+  active: 'Places in conflict',
+  repair: 'Places rebuilding',
 }
 
 function getMarkerOffset(id: string) {
@@ -209,7 +209,7 @@ export default function ConflictTracker() {
         </span>
         <span>
           <span className="section-kicker block text-[9px] font-semibold text-rose-200/80">Conflict Tracker</span>
-          <span className="mt-0.5 block text-xs text-slate-300">{activeCount} CFR cases tracked</span>
+          <span className="mt-0.5 block text-xs text-slate-300">{activeCount} CFR cases to explore</span>
         </span>
       </motion.button>
 
@@ -240,10 +240,10 @@ export default function ConflictTracker() {
             >
               <header className="flex flex-col gap-5 border-b border-white/10 p-5 sm:flex-row sm:items-start sm:justify-between sm:p-6">
                 <div>
-                  <p className="section-kicker text-[10px] font-semibold text-rose-200/75">Global Conflict Tracker</p>
-                  <h2 className="premium-heading mt-2 text-3xl leading-tight text-white sm:text-4xl">Map of rupture and repair</h2>
+                  <p className="section-kicker text-[10px] font-semibold text-rose-200/75">World Conflict Tracker</p>
+                  <h2 className="premium-heading mt-2 text-3xl leading-tight text-white sm:text-4xl">Where families are hurting, and where healing is being tried</h2>
                   <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-300">
-                    CFR-aligned static overview of active conflicts, with repair cases kept as a separate learning layer. Last reviewed: {lastReviewed}.
+                    This is a static, source-backed overview based mainly on the CFR Global Conflict Tracker, with a separate view for places trying to rebuild trust. Last reviewed: {lastReviewed}.
                   </p>
                 </div>
                 <button
@@ -322,8 +322,8 @@ export default function ConflictTracker() {
                     <div className="pointer-events-none absolute bottom-4 left-4 right-4 flex flex-wrap items-center justify-between gap-3 rounded-[0.5rem] border border-white/10 bg-slate-950/62 px-4 py-3 text-xs text-slate-300 backdrop-blur-md">
                       <span>{mapCases.length} visible cases</span>
                       <span className="flex items-center gap-4">
-                        <span className="inline-flex items-center gap-1.5"><i className="h-2 w-2 rounded-full bg-rose-400" /> Active</span>
-                        <span className="inline-flex items-center gap-1.5"><i className="h-2 w-2 rounded-full bg-cyan-300" /> Repair</span>
+                        <span className="inline-flex items-center gap-1.5"><i className="h-2 w-2 rounded-full bg-rose-400" /> Hurting now</span>
+                        <span className="inline-flex items-center gap-1.5"><i className="h-2 w-2 rounded-full bg-cyan-300" /> Rebuilding trust</span>
                       </span>
                     </div>
                   </div>
@@ -352,15 +352,15 @@ export default function ConflictTracker() {
 
                         <div className="mt-6 space-y-5">
                           <section>
-                            <p className="section-kicker mb-2 text-[10px] font-semibold text-rose-200/70">Situation</p>
+                            <p className="section-kicker mb-2 text-[10px] font-semibold text-rose-200/70">What is happening</p>
                             <p className="text-sm leading-7 text-slate-300">{selectedConflict.summary}</p>
                           </section>
                           <section>
-                            <p className="section-kicker mb-2 text-[10px] font-semibold text-orange-200/70">Human cost</p>
+                            <p className="section-kicker mb-2 text-[10px] font-semibold text-orange-200/70">What families are carrying</p>
                             <p className="text-sm leading-7 text-slate-300">{selectedConflict.humanitarianNote}</p>
                           </section>
                           <section className="rounded-[0.5rem] border border-cyan-300/15 bg-cyan-400/8 p-4">
-                            <p className="section-kicker mb-2 text-[10px] font-semibold text-cyan-100/80">Repair lens</p>
+                            <p className="section-kicker mb-2 text-[10px] font-semibold text-cyan-100/80">What may help healing</p>
                             <p className="text-sm leading-7 text-cyan-50/88">{selectedConflict.repairLesson}</p>
                           </section>
                         </div>
@@ -381,13 +381,13 @@ export default function ConflictTracker() {
                             ))}
                           </div>
                           <p className="mt-4 text-xs leading-5 text-slate-500">
-                            Static v1 dataset. Use linked trackers for current reporting before making decisions.
+                            This is a static learning dataset. Please use the linked trackers for the most current reporting before making real-world decisions.
                           </p>
                         </div>
                       </motion.div>
                     </AnimatePresence>
                   ) : (
-                    <div className="flex h-full items-center justify-center text-sm text-slate-400">No cases match this filter.</div>
+                    <div className="flex h-full items-center justify-center text-sm text-slate-400">No cases match this filter right now.</div>
                   )}
                 </aside>
               </div>

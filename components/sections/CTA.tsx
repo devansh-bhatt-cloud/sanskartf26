@@ -34,11 +34,11 @@ export default function CTA() {
     const nextErrors: FormErrors = {}
 
     if (!form.name.trim()) {
-      nextErrors.name = 'Name is required.'
+      nextErrors.name = 'Please share your name.'
     }
 
     if (!form.message.trim()) {
-      nextErrors.message = 'A message or suggestion is required.'
+      nextErrors.message = 'Please share a message, memory, concern, or suggestion.'
     }
 
     setErrors(nextErrors)
@@ -97,24 +97,24 @@ export default function CTA() {
             variants={fadeUp}
             className="eyebrow-label mb-3 text-xs font-medium text-emerald-400"
           >
-            Final Step
+            Share
           </motion.p>
           <motion.h2
             variants={fadeUp}
             className="premium-heading text-5xl leading-tight text-white sm:text-6xl lg:text-7xl"
           >
-            Carry the <span className="text-emerald-200">Repair Forward</span>
+            Share One <span className="text-emerald-200">Thought for Peace</span>
           </motion.h2>
           <motion.p variants={fadeUp} className="mx-auto mt-8 max-w-3xl text-xl leading-9 text-slate-300">
-            The journey ends with a choice. Leave one message or one suggestion that helps this work continue.
+            If something here stirred a memory, a concern, or a hopeful idea, leave it here. A thoughtful message can help this work feel more human and more useful.
           </motion.p>
 
           <motion.div variants={fadeUp} className="mt-12 flex flex-col justify-center gap-4 sm:flex-row sm:gap-5">
             <Button href="#interactive" variant="secondary">
-              Revisit the Field
+              Revisit Choices
             </Button>
             <Button href="#global" variant="ghost">
-              See Global Lessons
+              See World Lessons
             </Button>
           </motion.div>
         </motion.div>
@@ -129,13 +129,13 @@ export default function CTA() {
           <div className="grid gap-0 lg:grid-cols-[0.72fr_1fr]">
             <div className="border-b border-white/8 p-9 lg:border-b-0 lg:border-r lg:p-12">
               <motion.p variants={fadeUp} className="section-kicker text-[10px] font-medium text-emerald-200/70">
-                Prompt Bank
+                Gentle Prompts
               </motion.p>
               <motion.h3 variants={fadeUp} className="premium-heading mt-4 text-2xl text-white sm:text-3xl">
-                Need a place to begin?
+                Not sure how to begin?
               </motion.h3>
               <motion.p variants={fadeUp} className="mt-5 text-sm leading-7 text-slate-300">
-                Use a prompt to add a message, a critique, or a concrete next step.
+                Use one of these prompts to begin a message, memory, concern, or suggestion.
               </motion.p>
 
               <div className="mt-8 space-y-4">
@@ -154,9 +154,9 @@ export default function CTA() {
               <div className="theme-surface-overlay mt-10 rounded-[0.5rem] p-6">
                 <p className="section-kicker text-[10px] font-medium text-cyan-200/70">What we are asking for</p>
                 <ul className="mt-4 space-y-3 text-sm leading-relaxed text-slate-300">
-                  <li>One truth that should not be avoided.</li>
-                  <li>One idea that makes this experience stronger.</li>
-                  <li>One story of fracture or repair we should examine next.</li>
+                  <li>One message you wish people would remember.</li>
+                  <li>One concern or suggestion that could improve this experience.</li>
+                  <li>One story of hurt or healing we should pay attention to next.</li>
                 </ul>
               </div>
             </div>
@@ -166,7 +166,7 @@ export default function CTA() {
                 Leave a Message
               </motion.h3>
               <motion.p variants={fadeUp} className="mt-4 text-sm leading-7 text-slate-400">
-                Send one message, one critique, or one next step for repair.
+                Share a message, memory, concern, or suggestion in plain words.
               </motion.p>
 
               <AnimatePresence mode="wait">
@@ -184,7 +184,7 @@ export default function CTA() {
                     </div>
                     <h4 className="mt-6 text-2xl font-bold text-white">Message received.</h4>
                     <p className="mt-3 max-w-md text-slate-300">
-                      Repair moves forward because people add to it.
+                      Thank you for adding your voice. Thoughtful words help this project stay grounded in real people.
                     </p>
                     <button
                       type="button"
@@ -194,7 +194,7 @@ export default function CTA() {
                       }}
                       className="mt-6 text-sm font-semibold text-emerald-300 underline underline-offset-4 transition-colors duration-200 hover:text-emerald-200"
                     >
-                      Send another message
+                      Share another thought
                     </button>
                   </motion.div>
                 ) : (
@@ -241,7 +241,7 @@ export default function CTA() {
                     </div>
 
                     <div>
-                      <label className="mb-1.5 block text-sm font-medium text-slate-300">Message Type</label>
+                      <label className="mb-1.5 block text-sm font-medium text-slate-300">What would you like to share?</label>
                       <select
                         name="category"
                         value={form.category}
@@ -258,14 +258,14 @@ export default function CTA() {
 
                     <div>
                       <label className="mb-1.5 block text-sm font-medium text-slate-300">
-                        Your peace message or suggestion <span className="text-emerald-400">*</span>
+                        Your message, memory, concern, or suggestion <span className="text-emerald-400">*</span>
                       </label>
                       <textarea
                         name="message"
                         value={form.message}
                         onChange={handleChange}
                         rows={7}
-                        placeholder="Write a message, a project suggestion, or a story of repair worth including..."
+                        placeholder="Write a message, memory, concern, or suggestion you would like this project to hold with care..."
                         className={`w-full resize-none rounded-xl border bg-white/5 px-4 py-3 text-white outline-none transition-all duration-200 placeholder:text-slate-500 focus:ring-2 focus:ring-emerald-500/40 ${
                           errors.message ? 'border-red-500/60' : 'border-white/10 focus:border-emerald-500/40'
                         }`}
@@ -298,7 +298,7 @@ export default function CTA() {
                           </motion.span>
                         ) : (
                           <motion.span key="idle" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                            Send Message
+                            Share My Thought
                           </motion.span>
                         )}
                       </AnimatePresence>
@@ -318,7 +318,7 @@ export default function CTA() {
           className="mt-20 text-center"
         >
           <p className="text-3xl font-light italic leading-relaxed text-slate-200 sm:text-4xl">
-            &ldquo;Repair begins when someone chooses not to look away.&rdquo;
+            &ldquo;Peace grows when people choose to care about each other on purpose.&rdquo;
           </p>
           <div className="mx-auto mt-6 h-0.5 w-16 bg-gradient-to-r from-transparent via-emerald-400 to-transparent" />
         </motion.div>

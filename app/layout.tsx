@@ -15,9 +15,9 @@ const cardo = Cardo({
 });
 
 export const metadata: Metadata = {
-  title: "Peace & Global Harmony | An Interactive Experience",
+  title: "Peace & Global Harmony | Hurt, Healing, and Hope",
   description:
-    "An immersive journey through conflict, understanding, and global peace. Explore the causes of division and the pathways to harmony.",
+    "A human, source-backed journey through conflict, healing, and hope. Explore why peace slips away, what war takes from families, and how trust can return.",
 };
 
 const themeInitScript = `(() => {
