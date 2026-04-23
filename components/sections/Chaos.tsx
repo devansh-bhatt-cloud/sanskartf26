@@ -69,7 +69,7 @@ export default function Chaos() {
                   <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-red-400/18 bg-white/[0.03] text-red-100/90">
                     <Glyph name={card.icon} className="h-6 w-6" title={card.title} />
                   </span>
-                  <span className="section-kicker rounded-full border border-red-400/16 bg-red-500/8 px-3 py-1 text-[10px] font-medium text-red-200/70 data-[theme=light]:bg-maroon light:bg-maroon html-light:bg-[maroon]">
+                  <span className="section-kicker rounded-full border border-red-400/16 bg-red-500/8 px-3 py-1 text-[10px] font-medium text-red-200/70 dark:bg-red-500/8 dark:text-red-200/70 light:bg-maroon [html[data-theme=light]_&]:bg-[maroon] [html[data-theme=light]_&]:text-white [html[data-theme=light]_&]:border-[maroon]/30">
                     Reason {card.id}
                   </span>
                 </div>
